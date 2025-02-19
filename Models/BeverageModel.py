@@ -1,0 +1,1 @@
+#declare beverage object id, name, price, stock, image(?) etc.

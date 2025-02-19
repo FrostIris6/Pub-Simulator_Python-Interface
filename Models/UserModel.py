@@ -1,0 +1,1 @@
+#declare user object id, name, email etc.

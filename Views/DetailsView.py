@@ -1,0 +1,1 @@
+#for expanding product details

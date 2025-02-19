@@ -1,0 +1,1 @@
+#for the settings object id, language, view (not sure if we should only do this from view or also declare as an attribute)
