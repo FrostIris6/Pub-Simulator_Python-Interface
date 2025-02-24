@@ -2,4 +2,3 @@
 from .MenuModel import MenuModel
 from .UserModel import UserModel
 from .TableModel import TableModel
-from .SettingsModel import SettingsModel

@@ -10,9 +10,11 @@ class MenuItem:
     
     def __init__(self, name, price, stock, category, image="", item_id=None):
         self.id = item_id  # keep existing ID from database
-        self.name = name
+        self.name = name # do a dictionary for the db
         self.price = price
         self.stock = stock
+        #description field
+        #VIP or not
         self.category = category  #Food, Wine, Cocktail etc.
         self.image = image  
 
