@@ -1,1 +1,0 @@
-#for food object id, name, price, stock, image(?) etc.
