@@ -8,13 +8,13 @@ MENU_FILE = "database/MenuDB.json"
 
 class MenuItem:
     
-    def __init__(self, name, price, stock, category, image="", item_id=None):
+    def __init__(self, name, price, stock, description, is_vip, category, image="", item_id=None):
         self.id = item_id  # keep existing ID from database
         self.name = name # do a dictionary for the db
         self.price = price
         self.stock = stock
-        #description field
-        #VIP or not
+        self.description = description
+        self.is_vip = is_vip
         self.category = category  #Food, Wine, Cocktail etc.
         self.image = image  
 
@@ -25,6 +25,8 @@ class MenuItem:
             "name": self.name,
             "price": self.price,
             "stock": self.stock,
+            "description": self.description,
+            "is_vip": self.is_vip,
             "category": self.category,
             "image": self.image
         }
@@ -36,6 +38,8 @@ class MenuItem:
             name=data["name"],
             price=data["price"],
             stock=data["stock"],
+            description=data["description"],
+            is_vip=data["is_vip"],
             category=data["category"],
             image=data.get("image", ""),
             item_id=data["id"]
@@ -72,9 +76,9 @@ class MenuModel:
         with open(MENU_FILE, "w", encoding="utf-8") as f:
             json.dump([item.to_dict() for item in self.menu], f, indent=4)
 
-    def get_items_by_category(self, category):
+    def get_items_by_category(self, category, is_vip):
         #Retrieve all items in a specific category
-        return [item for item in self.menu if item.category.lower() == category.lower()]
+        return [item for item in self.menu if (item.category.lower() == category.lower() and item.is_vip.lower() == is_vip.lower())]
 
     def get_item_by_id(self, item_id):
         #Retrieve a single item by its ID
