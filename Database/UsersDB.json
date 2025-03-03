@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1001,
+        "name": "Alice Smith",
+        "password": "password123",
+        "type_of_user": "customer",
+        "balance": 50.0,
+        "method": "alice@gmail.com"
+    },
+    {
+        "id": 1002,
+        "name": "Bob Johnson",
+        "password": "securePass456",
+        "type_of_user": "customer",
+        "balance": 75.5,
+        "method": "bob1234"
+    },
+    {
+        "id": 1003,
+        "name": "Charlie Brown",
+        "password": "helloWorld789",
+        "type_of_user": "bartender",
+        "balance": 1000.0,
+        "method": "charlie@icloud.com"
+    },
+    {
+        "id": 1004,
+        "name": "David Lee",
+        "password": "P@ssw0rd",
+        "type_of_user": "customer",
+        "balance": 120.0,
+        "method": "+123456789"
+    },
+    {
+        "id": 1005,
+        "name": "1005",
+        "password": "defaultPass",
+        "type_of_user": "customer",
+        "balance": 10.0,
+        "method": "1005"
+    },
+    {
+        "id": 1006,
+        "name": "Frank",
+        "password": "frank567",
+        "type_of_user": "bartender",
+        "balance": 1000.00,
+        "method": "frankbar@yahoo.com"
+    },
+    {
+        "id": 1007,
+        "name": "Grace",
+        "password": "gracepass",
+        "type_of_user": "customer",
+        "balance": 10.50,
+        "method": "+987654321"
+    },
+    {
+        "id": 1008,
+        "name": "Henry",
+        "password": "henry789",
+        "type_of_user": "customer",
+        "balance": 300.20,
+        "method": "henrybankid"
+    },
+    {
+        "id": 1009,
+        "name": "Ivy",
+        "password": "ivysecure",
+        "type_of_user": "customer",
+        "balance": 5.00,
+        "method": "ivy@outlook.com"
+    },
+    {
+        "id": 1010,
+        "name": "Jack",
+        "password": "jackpass",
+        "type_of_user": "bartender",
+        "balance": 0.00,
+        "method": "+111223344"
+    }
+]
