@@ -1,1 +1,2 @@
 #actions for filtering by Cocktail, Food, Snack, Beer etc. when pressing the button -- also conditions for user
+#show by category, update stock, notification for low stock, fridge category, remove product from menu, see availability,
