@@ -1,1 +1,1 @@
-#for views switching, keeping each view in a dictionary(?) and hide the previous views, language dropdown
+#for views switching, keeping each view in a dictionary(?) and hide the previous views, language dropdown, notify security
