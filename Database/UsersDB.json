@@ -44,7 +44,7 @@
         "name": "Frank",
         "password": "frank567",
         "type_of_user": "bartender",
-        "balance": 1000.00,
+        "balance": 1000.0,
         "method": "frankbar@yahoo.com"
     },
     {
@@ -52,7 +52,7 @@
         "name": "Grace",
         "password": "gracepass",
         "type_of_user": "customer",
-        "balance": 10.50,
+        "balance": 10.5,
         "method": "+987654321"
     },
     {
@@ -60,7 +60,7 @@
         "name": "Henry",
         "password": "henry789",
         "type_of_user": "customer",
-        "balance": 300.20,
+        "balance": 300.2,
         "method": "henrybankid"
     },
     {
@@ -68,7 +68,7 @@
         "name": "Ivy",
         "password": "ivysecure",
         "type_of_user": "customer",
-        "balance": 5.00,
+        "balance": 5.0,
         "method": "ivy@outlook.com"
     },
     {
@@ -76,7 +76,15 @@
         "name": "Jack",
         "password": "jackpass",
         "type_of_user": "bartender",
-        "balance": 0.00,
+        "balance": 1000.0,
         "method": "+111223344"
+    },
+    {
+        "id": 1279,
+        "name": "8899",
+        "password": "8899",
+        "type_of_user": "customer",
+        "balance": 0.0,
+        "method": "1279"
     }
 ]
