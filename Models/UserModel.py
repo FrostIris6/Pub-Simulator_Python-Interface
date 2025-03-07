@@ -9,7 +9,13 @@ import time
 import random
 import re
 
-USER_FILE = "database/UserDB.json"
+USER_FILE = os.path.join(os.path.dirname(__file__), "D:/Pycharm/Pub-Simulator_Python-Interface/Database/UsersDB.json")
+USER_FILE = os.path.abspath(USER_FILE)  # absolute route
+
+# if os.path.exists(USER_FILE):
+#     print(f"✅ UsersDB.json found at: {os.path.abspath(USER_FILE)}")
+# else:
+#     print("❌ UsersDB.json NOT found! Check the path.")
 
 
 class UserList:
@@ -50,12 +56,15 @@ class UserModel:
         self.failed_attempts = {}  # remember times of wrong password
 
     def load_users(self):
-        #read users data from database
+        #print("Loading users from database...")
         if os.path.exists(USER_FILE):
             with open(USER_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
+                #print("Loaded data from JSON:", data)  # print data from json
                 self.users = [UserList.from_dict(user) for user in data]
+                #print("Converted users:", [user.to_dict() for user in self.users])  # readble
         else:
+            print("User database file not found!")
             self.users = []
 
     def save_users(self):
@@ -73,7 +82,11 @@ class UserModel:
             return None
 
         for user in self.users:
-            if user.id == identifier or user.name == identifier or user.method == identifier:
+            #print(f"Checking user: {user.to_dict()}")  # user data
+            #print(f"Identifier provided: {identifier}")
+
+            if str(user.id) == identifier or user.name == identifier or user.method == identifier:
+                print("User matched!")
                 if user.password == password:
                     print(f"Login successfully! Welcome {user.name}！")
                     self.failed_attempts[identifier] = 0  # reset fail counter
@@ -119,6 +132,8 @@ class UserModel:
         if user.type_of_user.lower() == "customer":
             print("Go to menu page...")
             # if customer, go back to menu page
+            self.show_balance(user)
+            #show account balance for VIP users
         elif user.type_of_user.lower() == "bartender":
             print("Go to bartender management page...")
             # if bartender, go to management page
