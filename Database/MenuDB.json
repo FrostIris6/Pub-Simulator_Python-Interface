@@ -1,0 +1,353 @@
+[
+    {
+        "id": 300,
+        "name": "Cabernet Sauvignon",
+        "price": "60 SEK",
+        "stock": 55,
+        "description": {
+            "en": "2002, Marseilles, Red Wine, red grapes, glass",
+            "sv": "2002, Marseille, Rött vin, röda druvor, glas",
+            "fr": "2002, Marseille, Vin rouge, raisins rouges, verre"
+        },
+        "is_vip": "NO",
+        "category": "wine",
+        "image": "Images/red_wine.jpeg"
+    },
+    {
+        "id": 301,
+        "name": "Merlot",
+        "price": "65 SEK",
+        "stock": 50,
+        "description": {
+            "en": "2018, Bordeaux, Red Wine, black cherry, glass",
+            "sv": "2018, Bordeaux, Rött vin, svarta körsbär, glas",
+            "fr": "2018, Bordeaux, Vin rouge, cerise noire, verre"
+        },
+        "is_vip": "NO",
+        "category": "wine",
+        "image": "Images/red_wine2.jpeg"
+    },
+    {
+        "id": 302,
+        "name": "Provence Rosé",
+        "price": "55 SEK",
+        "stock": 60,
+        "description": {
+            "en": "2021, Provence, Rosé Wine, strawberry, glass",
+            "sv": "2021, Provence, Rosévin, jordgubb, glas",
+            "fr": "2021, Provence, Vin rosé, fraise, verre"
+        },
+        "is_vip": "NO",
+        "category": "wine",
+        "image": "Images/rose_wine.jpeg"
+    },
+    {
+        "id": 303,
+        "name": "Chardonnay",
+        "price": "58 SEK",
+        "stock": 45,
+        "description": {
+            "en": "2019, Burgundy, White Wine, apple, glass",
+            "sv": "2019, Bourgogne, Vitt vin, äpple, glas",
+            "fr": "2019, Bourgogne, Vin blanc, pomme, verre"
+        },
+        "is_vip": "NO",
+        "category": "wine",
+        "image": "Images/white_wine.jpeg"
+    },
+    {
+        "id": 304,
+        "name": "Moët & Chandon Imperial",
+        "price": "150 SEK",
+        "stock": 20,
+        "description": {
+            "en": "2000, France, Sparkling Wine, citrus, bottle",
+            "sv": "2000, Frankrike, Mousserande vin, citrus, flaska",
+            "fr": "2000, France, Vin pétillant, agrumes, bouteille"
+        },
+        "is_vip": "YES",
+        "category": "wine",
+        "image": "Images/moet.jpeg"
+    },
+    {
+        "id": 305,
+        "name": "Ey Bro",
+        "price": "20 SEK",
+        "stock": 60,
+        "description": {
+            "en": "Swedish Producer, Sweden, blonde beer, 4%, tap",
+            "sv": "Svensk producent, Sverige, ljust öl, 4%, fat",
+            "fr": "Producteur suédois, Suède, bière blonde, 4%, pression"
+        },
+        "is_vip": "NO",
+        "category": "beer",
+        "image": "Images/eybro.jpeg"
+    },
+    {
+        "id": 306,
+        "name": "Guinness Draught",
+        "price": "25 SEK",
+        "stock": 50,
+        "description": {
+            "en": "Guinness Brewery, Ireland, stout, 4.2%, tap",
+            "sv": "Guinness Bryggeri, Irland, stout, 4.2%, fat",
+            "fr": "Brasserie Guinness, Irlande, stout, 4.2%, pression"
+        },
+        "is_vip": "NO",
+        "category": "beer",
+        "image": "Images/guinness.jpeg"
+    },
+    {
+        "id": 307,
+        "name": "Heineken",
+        "price": "22 SEK",
+        "stock": 70,
+        "description": {
+            "en": "Heineken Brewery, Netherlands, lager, 5%, bottle",
+            "sv": "Heineken Bryggeri, Nederländerna, lager, 5%, flaska",
+            "fr": "Brasserie Heineken, Pays-Bas, lager, 5%, bouteille"
+        },
+        "is_vip": "NO",
+        "category": "beer",
+        "image": "Images/heineken.jpeg"
+    },
+    {
+        "id": 308,
+        "name": "Punk IPA",
+        "price": "30 SEK",
+        "stock": 40,
+        "description": {
+            "en": "BrewDog, Scotland, IPA, 5.6%, tap",
+            "sv": "BrewDog, Skottland, IPA, 5.6%, fat",
+            "fr": "BrewDog, Écosse, IPA, 5.6%, pression"
+        },
+        "is_vip": "NO",
+        "category": "beer",
+        "image": "Images/punkipa.jpeg"
+    },
+    {
+        "id": 309,
+        "name": "Chimay Blue",
+        "price": "35 SEK",
+        "stock": 30,
+        "description": {
+            "en": "Chimay Brewery, Belgium, Trappist beer, 9%, bottle",
+            "sv": "Chimay Bryggeri, Belgien, Trappistöl, 9%, flaska",
+            "fr": "Brasserie Chimay, Belgique, bière trappiste, 9%, bouteille"
+        },
+        "is_vip": "YES",
+        "category": "beer",
+        "image": "Images/chimay_blue.jpeg"
+    },
+    {
+        "id": 310,
+        "name": "Aperol Spritz",
+        "price": "95 SEK",
+        "stock": 20,
+        "description": {
+            "en": "25%, (aperol, sparkly water, Prosecco), 300ml",
+            "sv": "25%, (aperol, kolsyrat vatten, Prosecco), 300ml",
+            "fr": "25%, (aperol, eau pétillante, Prosecco), 300ml"
+        },
+        "is_vip": "NO",
+        "category": "cocktail",
+        "image": "Images/aperol.jpeg"
+    },
+    {
+        "id": 311,
+        "name": "Margarita",
+        "price": "100 SEK",
+        "stock": 25,
+        "description": {
+            "en": "30%, (tequila, lime juice, triple sec), 250ml",
+            "sv": "30%, (tequila, limejuice, triple sec), 250ml",
+            "fr": "30%, (tequila, jus de citron vert, triple sec), 250ml"
+        },
+        "is_vip": "NO",
+        "category": "cocktail",
+        "image": "Images/margarita.jpeg"
+    },
+    {
+        "id": 312,
+        "name": "Mojito",
+        "price": "90 SEK",
+        "stock": 30,
+        "description": {
+            "en": "20%, (white rum, mint, lime, sugar, soda water), 350ml",
+            "sv": "20%, (vit rom, mynta, lime, socker, sodavatten), 350ml",
+            "fr": "20%, (rhum blanc, menthe, citron vert, sucre, eau gazeuse), 350ml"
+        },
+        "is_vip": "NO",
+        "category": "cocktail",
+        "image": "Images/mojito.jpeg"
+    },
+    {
+        "id": 313,
+        "name": "Old Fashioned",
+        "price": "110 SEK",
+        "stock": 15,
+        "description": {
+            "en": "32%, (bourbon, bitters, sugar, orange twist), 200ml",
+            "sv": "32%, (bourbon, bitters, socker, apelsinskal), 200ml",
+            "fr": "32%, (bourbon, bitters, sucre, zeste d'orange), 200ml"
+        },
+        "is_vip": "NO",
+        "category": "cocktail",
+        "image": "Images/old_fashioned.jpeg"
+    },
+    {
+        "id": 314,
+        "name": "Espresso Martini",
+        "price": "105 SEK",
+        "stock": 20,
+        "description": {
+            "en": "28%, (vodka, coffee liqueur, espresso, sugar syrup), 250ml",
+            "sv": "28%, (vodka, kaffelikör, espresso, sockerlag), 250ml",
+            "fr": "28%, (vodka, liqueur de café, espresso, sirop de sucre), 250ml"
+        },
+        "is_vip": "YES",
+        "category": "cocktail",
+        "image": "Images/espresso_martini.jpeg"
+    },
+    {
+        "id": 315,
+        "name": "Tacos",
+        "price": "100 SEK",
+        "stock": 20,
+        "description": {
+            "en": "Tortilla, beef, onions, sour cream, salt, pepper, cheese, jalapeno",
+            "sv": "Tortilla, nötkött, lök, gräddfil, salt, peppar, ost, jalapeno",
+            "fr": "Tortilla, bœuf, oignons, crème fraîche, sel, poivre, fromage, jalapeno"
+        },
+        "is_vip": "NO",
+        "category": "food",
+        "image": "Images/tacos.jpeg"
+    },
+    {
+        "id": 316,
+        "name": "Cheeseburger",
+        "price": "120 SEK",
+        "stock": 25,
+        "description": {
+            "en": "Beef patty, cheddar cheese, lettuce, tomato, onion, pickles, brioche bun",
+            "sv": "Nötkött, cheddarost, sallad, tomat, lök, pickles, briochebröd",
+            "fr": "Steak haché, fromage cheddar, laitue, tomate, oignon, cornichons, pain brioché"
+        },
+        "is_vip": "NO",
+        "category": "food",
+        "image": "Images/cheeseburger.jpeg"
+    },
+    {
+        "id": 317,
+        "name": "Margherita Pizza",
+        "price": "130 SEK",
+        "stock": 15,
+        "description": {
+            "en": "Tomato sauce, mozzarella, fresh basil, olive oil, pizza dough",
+            "sv": "Tomatsås, mozzarella, färsk basilika, olivolja, pizzadeg",
+            "fr": "Sauce tomate, mozzarella, basilic frais, huile d'olive, pâte à pizza"
+        },
+        "is_vip": "NO",
+        "category": "food",
+        "image": "Images/margherita_pizza.jpeg"
+    },
+    {
+        "id": 318,
+        "name": "Filet Mignon",
+        "price": "250 SEK",
+        "stock": 10,
+        "description": {
+            "en": "Beef tenderloin, garlic butter, rosemary, salt, pepper, mashed potatoes",
+            "sv": "Oxfilé, vitlökssmör, rosmarin, salt, peppar, potatismos",
+            "fr": "Filet de bœuf, beurre à l'ail, romarin, sel, poivre, purée de pommes de terre"
+        },
+        "is_vip": "YES",
+        "category": "food",
+        "image": "Images/filet_mignon.jpeg"
+    },
+    {
+        "id": 319,
+        "name": "Lobster Bisque",
+        "price": "180 SEK",
+        "stock": 12,
+        "description": {
+            "en": "Lobster meat, heavy cream, white wine, garlic, shallots, paprika",
+            "sv": "Hummerkött, vispgrädde, vitt vin, vitlök, schalottenlök, paprika",
+            "fr": "Chair de homard, crème épaisse, vin blanc, ail, échalotes, paprika"
+        },
+        "is_vip": "YES",
+        "category": "food",
+        "image": "Images/lobster_bisque.jpeg"
+    },
+    {
+        "id": 320,
+        "name": "Pepsi",
+        "price": "0 SEK",
+        "stock": 12,
+        "description": {
+            "en": "Refreshing soda, 100 kcal",
+            "sv": "Uppfriskande läsk, 100 kcal",
+            "fr": "Soda rafraîchissant, 100 kcal"
+        },
+        "is_vip": "YES",
+        "category": "fridge",
+        "image": "Images/pepsi.jpeg"
+    },
+    { 
+        "id": 321,
+        "name": "Coca-Cola",
+        "price": "0 SEK",
+        "stock": 15,
+        "description": {
+            "en": "Classic cola taste, 110 kcal",
+            "sv": "Klassisk colasmak, 110 kcal",
+            "fr": "Goût classique de cola, 110 kcal"
+        },
+        "is_vip": "YES",
+        "category": "fridge",
+        "image": "Images/coca_cola.jpeg"
+    },
+    { 
+        "id": 322,
+        "name": "Red Bull",
+        "price": "0 SEK",
+        "stock": 10,
+        "description": {
+            "en": "Energy drink with taurine and caffeine, 80 kcal",
+            "sv": "Energidryck med taurin och koffein, 80 kcal",
+            "fr": "Boisson énergisante avec taurine et caféine, 80 kcal"
+        },
+        "is_vip": "YES",
+        "category": "fridge",
+        "image": "Images/red_bull.jpeg"
+    },
+    { 
+        "id": 323,
+        "name": "San Pellegrino",
+        "price": "0 SEK",
+        "stock": 8,
+        "description": {
+            "en": "Sparkling mineral water, 0 kcal",
+            "sv": "Kolsyrat mineralvatten, 0 kcal",
+            "fr": "Eau minérale pétillante, 0 kcal"
+        },
+        "is_vip": "YES",
+        "category": "fridge",
+        "image": "Images/san_pellegrino.jpeg"
+    },
+    { 
+        "id": 324,
+        "name": "Vitamin Well Reload",
+        "price": "0 SEK",
+        "stock": 10,
+        "description": {
+            "en": "Vitamin water with magnesium and B12, lemon-lime flavor, 20 kcal",
+            "sv": "Vitaminvatten med magnesium och B12, citron-limesmak, 20 kcal",
+            "fr": "Eau vitaminée avec magnésium et B12, saveur citron-lime, 20 kcal"
+        },
+        "is_vip": "YES",
+        "category": "fridge",
+        "image": "Images/vitamin_well.jpeg"
+    }
+
+]
