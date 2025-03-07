@@ -14,16 +14,32 @@ class OrderModel:
 
         self.user_id = user_id
         self.table_id = table_id
-        self.items = [] #all items that have ordered
-        self.order_info = {}
+        self.items = [{"product_id": "汉堡", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "1汉堡", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
+        self.order_info = {} # order_info for this order without detailed items info
         self.transaction_id = str(uuid.uuid4())
+
 
     def add_item(self, product_id, price, amount=1, specification=None, notes=None):
         # add new items
         item = dict(product_id=product_id, price=price, amount=amount, specification=specification, notes=notes)
         self.items.append(item)
 
-    def refresh_items(self, product_id, price, amount=1, specification=None, notes=None):
+    def minus1_item(self, product_id):
+        # amount - 1
+        for item in self.items:
+            if item["product_id"] == product_id:
+                if item["amount"] <= 1:
+                    return False
+                else: item["amount"]-=1
+                return True
+
+    def plus1_item(self, product_id):
+        # amount + 1
+        for item in self.items:
+            if item["product_id"] == product_id:
+                item["amount"] += 1
+
+    def update_items(self, product_id, price, amount=1, specification=None, notes=None):
         #refresh data of existed items
         for item in self.items:
             if item["product_id"] == product_id:
@@ -35,6 +51,16 @@ class OrderModel:
     def remove_item(self, product_id):
         #delete an item
         self.items = [item for item in self.items if item["product_id"] != product_id]
+
+    def add_notes(self, product_id, notes):
+        for item in self.items:
+            if item["product_id"] == product_id:
+                item["note"] = notes
+
+    def pick_spe(self, product_id, spe):
+        for item in self.items:
+            if item["product_id"] == product_id:
+                item["specification"] = spe
 
     def get_order_info(self, transaction_id, user_id, table_id, total_price, transaction_time, items):
         self.order_info = {
@@ -80,10 +106,10 @@ class OrderModel:
 
 
 #test demos
-# order = OrderModel(1,1,1)
+# order = OrderModel(1,1)
 # order.add_item(1,2,3,"can","no spicy")
-# order.refresh_items(1,12,13,"bottle","spicy")
-# order.remove_item(1)
+# # order.refresh_items(1,12,13,"bottle","spicy")
+# # order.remove_item(1)
 # order.write_order()
 # order.read_order()
 

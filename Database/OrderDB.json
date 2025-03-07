@@ -1,0 +1,16 @@
+{
+    "transaction_id": "3a5dd7ae-679d-45e9-8bae-2706141036ee",
+    "user_id": 1,
+    "table_id": 1,
+    "money": 6,
+    "transaction_time": "2025-03-06 17:55:45",
+    "breakdown": [
+        {
+            "product_id": 1,
+            "price": 2,
+            "amount": 3,
+            "specification": "can",
+            "notes": "no spicy"
+        }
+    ]
+}
