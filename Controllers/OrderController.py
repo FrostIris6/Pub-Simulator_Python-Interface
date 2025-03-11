@@ -5,7 +5,7 @@
 #methods: 1. in memu page click + to show submenu(pop-up) with 1)"order" to add items 2)"amount" 3)specification(op) 4)notes(op)
 # 2. in order page click 1) + to plus 1, 2) - to minus 1, 3) "edit" to show submenu(pop-up) 4)show price at bottom
 #logic: controller: 1. get product info from menudb 2. record new order items 3. adjust ordered items info
-from Models.Order_Payment_Model import OrderModel
+from Models.Order_Payment_Model import OrderModel, PaymentModel
 from Views.OrderView import OrderView
 import tkinter as tk
 from tkinter import messagebox
@@ -19,6 +19,7 @@ class OrderController:
         self.user_id = user_id
         self.table_id = table_id
         self.order = OrderModel(user_id, table_id) #call model_layer to deal with data
+        self.payment = PaymentModel(self.order)
 
 
     def add_item(self, item_id, price, amount=1, specification=None, notes=None): #get new item from menu
@@ -55,6 +56,18 @@ class OrderController:
 
     def checkout_order(self):#enter checkout process, write bill into DB
         self.order.write_order()
+        # if customer_status:
+        #     if self.payment._check_vip_balance():
+        #         self.payment._save_payment_record()
+        #         return True
+        #     else:
+        #         return False
+        # else:
+        #     self.payment._save_payment_record()
+        #     return True
+
+    def clear_order(self): self.order.clear_order()
+
 
 
 
