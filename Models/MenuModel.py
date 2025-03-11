@@ -55,11 +55,15 @@ class MenuModel:
 
     def load_menu(self):
         #Load menu from a single JSON file
-        if os.path.exists(MENU_FILE):
-            with open(MENU_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                self.menu = [MenuItem.from_dict(item) for item in data]
-        else:
+        try:
+            if os.path.exists(MENU_FILE):
+                with open(MENU_FILE, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    self.menu = [MenuItem.from_dict(item) for item in data]
+            else:
+                self.menu = []
+        except (IOError, json.JSONDecodeError) as e:
+            print(f"Error loading menu: {e}")
             self.menu = []
 
     def update_stock(self, item_id, new_stock):
@@ -83,3 +87,9 @@ class MenuModel:
     def get_item_by_id(self, item_id):
         #Retrieve a single item by its ID
         return next((item for item in self.menu if item.id == item_id), None)
+    
+    def get_item_by_name(self, name):
+        return [item for item in self.menu if name.lower() in item.name.lower()]
+
+    def get_vip_items(self):
+        return [item for item in self.menu if item.is_vip.lower() == "yes"]
