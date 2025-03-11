@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import Frame, Label, Button
+from Views.OrderViewClass import OrderViewClass
+from Views.MenuView import MenuView
 
 class MainView:
     def __init__(self, root):
@@ -38,8 +40,10 @@ class MainView:
         self.menu_area = Frame(self.main_content, bg="white")
         self.menu_area.pack(fill="both", expand=True)
 
-        self.menu_label = Label(self.menu_area, text="Menu Content Here", font=("Arial", 16), bg="white")
-        self.menu_label.pack(pady=20)
+        # put order frame here
+        self.order_frame = OrderViewClass(self.menu_area, None)
+        # self.menu_label = Label(self.menu_area, text="Menu Content Here", font=("Arial", 16), bg="white")
+        # self.menu_label.pack(pady=20)
 
     def set_user_view(self, view):
         """Set and display the user view."""
@@ -54,3 +58,4 @@ class MainView:
         for widget in self.menu_area.winfo_children():
             widget.destroy()  # Clear old widgets
         view.pack(fill="both", expand=True)
+

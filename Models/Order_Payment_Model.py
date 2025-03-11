@@ -14,7 +14,7 @@ class OrderModel:
 
         self.user_id = user_id
         self.table_id = table_id
-        self.items = [{"product_id": "汉堡", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "1汉堡", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
+        self.items = [{"product_id": "Burger", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "beef", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
         self.order_info = {} # order_info for this order without detailed items info
         self.transaction_id = str(uuid.uuid4())
 
@@ -72,11 +72,15 @@ class OrderModel:
             "breakdown": items,
         }
 
-    def checkout_info(self):
-        transaction_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    def total_price(self):
         total_price = 0
         for item in self.items:
-            total_price = item["price"] * item["amount"]
+            total_price += item["price"] * item["amount"]
+        return total_price
+
+    def checkout_info(self):
+        transaction_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        total_price = self.total_price()
         self.get_order_info(self.transaction_id,self.user_id,self.table_id,total_price,transaction_time,self.items)
         return self.order_info
 
@@ -103,6 +107,9 @@ class OrderModel:
                 json.dump(self.checkout_info(), f, ensure_ascii=False, indent=4)
         else:
             return "File not found."
+
+    def clear_order(self):
+        self.items = []
 
 
 #test demos
@@ -252,9 +259,13 @@ class PaymentModel:
 
         return payment_data
 
-    def _check_vip_balance(self, vip_id: str, required: float) -> bool:
+    def _check_vip_balance(self, required: float, vip_id: str = None) -> bool:
         """check account balance"""
         # if it's true then it's enough balance for payment
+        # if customer["vip_id"] >= required:
+        #     return True
+        # else:
+        #     return False
         return True
 
     def get_unpaid_items(self):
