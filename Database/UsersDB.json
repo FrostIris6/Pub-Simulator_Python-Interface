@@ -86,5 +86,13 @@
         "type_of_user": "customer",
         "balance": 0.0,
         "method": "1279"
+    },
+    {
+        "id": 7810,
+        "name": "2025",
+        "password": "2025",
+        "type_of_user": "customer",
+        "balance": 0.0,
+        "method": "7810"
     }
 ]
