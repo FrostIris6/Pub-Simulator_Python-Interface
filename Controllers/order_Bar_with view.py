@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 
-# 订单控制器
+# 订单控制器 controller
 class EnhancedOrderController:
     def __init__(self):
         self.ORDER_FILE = "OrderDB.json"  # 使用相对路径
@@ -143,7 +143,7 @@ class EnhancedOrderController:
         return history_orders
 
 
-# 订单卡片组件
+# 订单卡片组件 view
 class OrderCard(tk.Frame):
     def __init__(self, parent, order, on_click=None, **kwargs):
         super().__init__(parent, **kwargs)
