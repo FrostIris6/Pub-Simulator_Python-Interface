@@ -143,7 +143,7 @@ class EnhancedOrderController:
         return history_orders
 
 
-# 订单卡片组件 view card set
+# 订单卡片组件 view card set (view part start here)
 class OrderCard(tk.Frame):
     def __init__(self, parent, order, on_click=None, **kwargs):
         super().__init__(parent, **kwargs)
