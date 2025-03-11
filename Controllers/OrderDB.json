@@ -1,0 +1,110 @@
+[
+    {
+        "transaction_id": "1001",
+        "table_id": "A2",
+        "transaction_time": "2025-03-11 13:01:45",
+        "breakdown": [
+            {
+                "product_id": 101,
+                "price": 32.0,
+                "amount": 1,
+                "specification": "Wine - Glass"
+            },
+            {
+                "product_id": 102,
+                "price": 20.0,
+                "amount": 1,
+                "specification": "Beer - Bottle"
+            },
+            {
+                "product_id": 103,
+                "price": 45.0,
+                "amount": 1,
+                "specification": "Cocktail"
+            },
+            {
+                "product_id": 104,
+                "price": 145.0,
+                "amount": 1,
+                "specification": "Food"
+            }
+        ]
+    },
+    {
+        "transaction_id": "1002",
+        "table_id": "B3",
+        "transaction_time": "2024-01-01 18:00:00",
+        "breakdown": [
+            {
+                "product_id": 201,
+                "price": 60.0,
+                "amount": 3,
+                "is_paid": true,
+                "specification": "Beer"
+            },
+            {
+                "product_id": 301,
+                "price": 120.0,
+                "amount": 1,
+                "is_paid": true,
+                "specification": "Whiskey"
+            }
+        ]
+    },
+    {
+        "transaction_id": "1003",
+        "table_id": "C5",
+        "transaction_time": "2025-03-11 13:01:45",
+        "breakdown": [
+            {
+                "product_id": 201,
+                "price": 68.0,
+                "amount": 1,
+                "specification": "红酒 - Wine - Glass",
+                "is_paid": false
+            },
+            {
+                "product_id": 202,
+                "price": 98.0,
+                "amount": 1,
+                "specification": "威士忌 - Whiskey",
+                "is_paid": false
+            },
+            {
+                "product_id": 203,
+                "price": 38.0,
+                "amount": 2,
+                "specification": "啤酒 - Beer - Bottle",
+                "is_paid": false
+            },
+            {
+                "product_id": 301,
+                "price": 58.0,
+                "amount": 1,
+                "specification": "鸡尾酒 - Mojito",
+                "is_paid": false
+            },
+            {
+                "product_id": 302,
+                "price": 62.0,
+                "amount": 1,
+                "specification": "鸡尾酒 - Margarita",
+                "is_paid": false
+            },
+            {
+                "product_id": 401,
+                "price": 88.0,
+                "amount": 1,
+                "specification": "食品 - Snack Platter",
+                "is_paid": false
+            },
+            {
+                "product_id": 402,
+                "price": 35.0,
+                "amount": 2,
+                "specification": "食品 - French Fries",
+                "is_paid": false
+            }
+        ]
+    }
+]
