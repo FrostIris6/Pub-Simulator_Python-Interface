@@ -6,7 +6,7 @@
 # 2. in order page click 1) + to plus 1, 2) - to minus 1, 3) "edit" to show submenu(pop-up) 4)show price at bottom
 #logic: controller: 1. get product info from menudb 2. record new order items 3. adjust ordered items info
 from Models.Order_Payment_Model import OrderModel, PaymentModel
-from Views.OrderView import OrderView
+from Views.OrderViewClass import OrderViewClass
 import tkinter as tk
 from tkinter import messagebox
 
@@ -76,8 +76,8 @@ class OrderController:
 # app = OrderView(root, order_controller)  # 将 OrderController 传递给 OrderView 刚刚这里出错，导致view那边收不到正常的controller的实例
 # order_controller.view = app
 # root.mainloop()
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = OrderView(root, None)
-    #order_controller = OrderController(app, 1, 1)
-    root.mainloop()
+# if __name__ == "__main__":
+#     root = tk.Tk()
+#     app = OrderViewClass(root, None)
+#     #order_controller = OrderController(app, 1, 1)
+#     root.mainloop()

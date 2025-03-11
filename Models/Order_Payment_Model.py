@@ -14,7 +14,7 @@ class OrderModel:
 
         self.user_id = user_id
         self.table_id = table_id
-        self.items = [{"product_id": "汉堡", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "1汉堡", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
+        self.items = [{"product_id": "Burger", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "beef", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
         self.order_info = {} # order_info for this order without detailed items info
         self.transaction_id = str(uuid.uuid4())
 
