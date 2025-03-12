@@ -1,27 +1,34 @@
 from tkinter import messagebox
+from Models.UserModel import UserList
 
 class UserController:
-    """管理用户的登录、注册、登出逻辑"""
+    """Manages user login, registration, and logout logic"""
     def __init__(self, user_model):
         self.user_model = user_model
-        self.current_user = None  # 存储当前登录用户
+        self.current_user = None  # Stores the currently logged-in user
 
     def login(self, identifier, password):
-        user = self.user_model.login(identifier, password)
-        if user:
-            self.current_user = user
-            return True  # 登录成功
+        """Handles user login"""
+        result = self.user_model.login(identifier, password)
+
+        if isinstance(result, UserList):  # Login successful
+            self.current_user = result
+            return "success"
+        elif result == "locked":  # Account is locked
+            return "locked"
+        elif result.startswith("wrong_password"):
+            return result  # Example: "wrong_password:3"
         else:
-            messagebox.showerror("Login Failed", "Invalid credentials!")
-            return False  # 登录失败
+            return "not_found"  # User not found
 
     def register(self, name, password, user_type, contact):
+        """Handles user registration"""
         new_user = self.user_model.register(name, password, user_type, contact)
         if new_user:
             messagebox.showinfo("Success", f"Registration successful! Your ID is {new_user.id}")
 
     def logout(self):
-        """处理登出"""
+        """Handles user logout"""
         if self.current_user:
             messagebox.showinfo("Logged Out", "You have been logged out successfully.")
             self.current_user = None

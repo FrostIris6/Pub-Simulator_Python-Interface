@@ -4,20 +4,24 @@ from Views.MainView import MainView
 from Views.CustomerView import CustomerView
 from Controllers.UserController import UserController
 from Views.LoginView import LoginView
+from Views.LoginView import RegisterView
+from Views.LoginView import TableChoice
 
 if __name__ == "__main__":
     root = tk.Tk()
     main_view = MainView(root)
 
-    # 初始化 MVC 组件
+    # Initialize MVC components
     user_model = UserModel()
     controller = UserController(user_model)
 
-    # 创建 LoginView
+    # Create LoginView
     login_view = LoginView(root, controller, lambda: customer_view.update_ui())
+    register_view = RegisterView(root, controller)
+    table_choice_view = TableChoice(root, None)
 
-    # 创建 CustomerView，并传递 login_view 作为依赖
-    customer_view = CustomerView(main_view.user_area, controller, login_view)
+    # Create CustomerView and pass login_view as a dependency
+    customer_view = CustomerView(main_view.user_area, controller, login_view, register_view, table_choice_view)
     main_view.set_user_view(customer_view)
 
     root.mainloop()

@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 
-# 订单控制器
+# 订单控制器 order controller
 class EnhancedOrderController:
     def __init__(self):
         self.ORDER_FILE = "OrderDB.json"  # 使用相对路径
@@ -15,7 +15,7 @@ class EnhancedOrderController:
             else:
                 os.makedirs(".", exist_ok=True)
 
-    # 加载所有订单数据
+    # 加载所有订单数据 load all order data
     def load_orders(self):
         try:
             if os.path.exists(self.ORDER_FILE):
@@ -23,7 +23,7 @@ class EnhancedOrderController:
                 data = json.load(file)
                 file.close()
 
-                # 确保返回列表类型
+                # 确保返回列表类型 return
                 if isinstance(data, list):
                     return data
                 else:
@@ -34,25 +34,25 @@ class EnhancedOrderController:
             messagebox.showerror("数据错误", f"读取订单文件失败: {str(e)}")
             return []
 
-    # 通过交易ID获取订单
+    # 通过交易ID获取订单 get order from transaction ID
     def get_order_by_transaction(self, transaction_id):
         orders = self.load_orders()
         transaction_id_str = str(transaction_id)
 
-        # 遍历查找匹配订单
+        # 遍历查找匹配订单 search transaction
         for order in orders:
             if str(order.get("transaction_id", "")) == transaction_id_str:
                 return order
         return None
 
-    # 保存订单数据
+    # 保存订单数据 save order data
     def save_order(self, order_data):
         orders = self.load_orders()
 
         # 确保ID是字符串格式
         order_data["transaction_id"] = str(order_data["transaction_id"])
 
-        # 查找是否存在相同ID的订单
+        # 查找是否存在相同ID的订单 search ID
         existing_index = -1
         for i in range(len(orders)):
             order = orders[i]
@@ -61,13 +61,13 @@ class EnhancedOrderController:
                     existing_index = i
                     break
 
-        # 更新或添加订单
+        # 更新或添加订单 refresh or add order
         if existing_index != -1:
             orders[existing_index] = order_data
         else:
             orders.append(order_data)
 
-        # 保存到文件
+        # 保存到文件 save file
         try:
             file = open(self.ORDER_FILE, "w", encoding="utf-8")
             json.dump(orders, file, indent=4, ensure_ascii=False)
@@ -75,7 +75,7 @@ class EnhancedOrderController:
         except Exception as e:
             messagebox.showerror("保存错误", f"保存订单数据失败: {str(e)}")
 
-    # 应用折扣
+    # 应用折扣 apply discount
     def apply_discount(self, order, discount_rate, product_ids=None):
         for item in order["breakdown"]:
             # 检查是否要对该商品应用折扣
@@ -96,7 +96,7 @@ class EnhancedOrderController:
                 item["discount_amount"] = discount_amount
         return order
 
-    # 部分结账
+    # 部分结账 partly checkout
     def partial_checkout(self, order, selected_ids):
         total_paid = 0
         # 处理选中的商品
@@ -106,12 +106,12 @@ class EnhancedOrderController:
                 total_paid += item["price"] * item["amount"]
         return order, total_paid
 
-    # 获取活跃订单(未全部付款)
+    # 获取活跃订单(未全部付款) get active order (unpaid)
     def get_active_orders(self):
         orders = self.load_orders()
         active_orders = []
 
-        # 筛选未全部付款的订单
+        # 筛选未全部付款的订单 (filter unpaid order)
         for o in orders:
             if isinstance(o, dict) and "breakdown" in o:
                 all_paid = True
@@ -124,12 +124,12 @@ class EnhancedOrderController:
 
         return active_orders
 
-    # 获取历史订单(全部付款)
+    # 获取历史订单(全部付款) (get history order)
     def get_history_orders(self):
         orders = self.load_orders()
         history_orders = []
 
-        # 筛选已全部付款的订单
+        # 筛选已全部付款的订单 (filter all paid order)
         for o in orders:
             if isinstance(o, dict) and "breakdown" in o:
                 all_paid = True
@@ -143,7 +143,7 @@ class EnhancedOrderController:
         return history_orders
 
 
-# 订单卡片组件
+# 订单卡片组件 view card set (view part start here)
 class OrderCard(tk.Frame):
     def __init__(self, parent, order, on_click=None, **kwargs):
         super().__init__(parent, **kwargs)
@@ -198,7 +198,7 @@ class OrderCard(tk.Frame):
             self.on_click(self.order["transaction_id"])
 
 
-# 订单列表视图
+# 订单列表视图 order list view
 class OrderListView(ttk.Frame):
     def __init__(self, parent, controller, main_window):
         super().__init__(parent)
@@ -279,7 +279,7 @@ class OrderListView(ttk.Frame):
         self.main_window.show_history_view()
 
 
-# 历史订单详情视图
+# 历史订单详情视图 history view
 class HistoryDetailView(ttk.Frame):
     def __init__(self, parent, controller, order, main_window):
         super().__init__(parent)
