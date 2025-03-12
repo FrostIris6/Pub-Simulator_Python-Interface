@@ -2,29 +2,28 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk  
 
-class MenuView(tk.Tk):
-    def __init__(self, controller):
-        super().__init__()
-        
+class MenuView(tk.Frame):
+    def __init__(self, root, controller):
+        super().__init__(root)
         self.controller = controller
         
         # Window setup
-        self.title("Menu Management")
-        self.geometry("1800x900")  # Enlarged window size
+        # self.title("Menu Management")
+        # self.geometry("1800x900")  # Enlarged window size
 
         # Left category panel
         self.left_frame = tk.Frame(self, width=300)
-        self.left_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsw")
+        self.left_frame.grid(row=0, column=0, padx=10, pady=100, sticky="nsw")
         self.left_frame.grid_columnconfigure(0, weight=0)
 
         # Main display area
         self.right_frame = tk.Frame(self)
-        self.right_frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+        self.right_frame.grid(row=0, column=1, padx=10, pady=100, sticky="nsew")
         self.right_frame.grid_columnconfigure(0, weight=1)
         self.right_frame.grid_rowconfigure(0, weight=1)
 
         # Scrollable canvas
-        self.canvas = tk.Canvas(self.right_frame, width=1200, height=750)  # Made it much larger
+        self.canvas = tk.Canvas(self.right_frame, width=800, height=400)  # Made it much larger
         self.scrollbar = tk.Scrollbar(self.right_frame, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
@@ -41,7 +40,7 @@ class MenuView(tk.Tk):
         self.categories = ['wine', 'beer', 'cocktail', 'food', 'fridge']
         self.category_buttons = {}
         for i, category in enumerate(self.categories):
-            btn = tk.Button(self.left_frame, text=category.capitalize(), width=25, command=lambda c=category: self.display_category(c))
+            btn = tk.Button(self.left_frame, text=category.capitalize(), fg="black", font=("Arial", 14), width=25, command=lambda c=category: self.display_category(c))
             btn.grid(row=i, column=0, pady=5)
             self.category_buttons[category] = btn
 

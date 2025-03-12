@@ -4,8 +4,10 @@ from Views.OrderViewClass import OrderViewClass
 from Views.MenuView import MenuView
 
 class MainView:
-    def __init__(self, root):
+    def __init__(self, root, user_controller, menu_controller):  # Accept both controllers
         self.root = root
+        self.user_controller = user_controller
+        self.menu_controller = menu_controller
         self.root.title("Main View")
         self.root.geometry("1280x800")  # Approximate resolution for a 10-inch tablet
         self.root.configure(bg="white")
@@ -14,16 +16,16 @@ class MainView:
         self.create_layout()
 
     def create_layout(self):
-        """Create the basic layout of the interface."""
-        # Left sidebar for functional buttons
-        self.sidebar = Frame(self.root, bg="#333", width=200, height=800)
-        self.sidebar.pack(side="left", fill="y")
+        # """Create the basic layout of the interface."""
+        # # Left sidebar for functional buttons
+        # self.sidebar = Frame(self.root, bg="#333", width=200, height=800)
+        # self.sidebar.pack(side="left", fill="y")
 
-        # Buttons
-        buttons = ["Wine", "Beer", "Cocktail", "Food", "Fridge"]
-        for text in buttons:
-            btn = Button(self.sidebar, text=text, bg="#555", fg="white", font=("Arial", 14), width=15)
-            btn.pack(pady=10, padx=10)
+        # # Buttons
+        # buttons = ["Wine", "Beer", "Cocktail", "Food", "Fridge"]
+        # for text in buttons:
+        #     btn = Button(self.sidebar, text=text, bg="#555", fg="white", font=("Arial", 14), width=15)
+        #     btn.pack(pady=10, padx=10)
 
         # Right-side user information & menu display area
         self.main_content = Frame(self.root, bg="white", width=1080, height=800)
@@ -39,6 +41,9 @@ class MainView:
         # Lower-right section (Menu display area)
         self.menu_area = Frame(self.main_content, bg="white")
         self.menu_area.pack(fill="both", expand=True)
+        
+        self.menu_frame = MenuView(self.menu_area, self.menu_controller)
+        self.menu_frame.pack(fill="both", expand=True)
 
         # put order frame here
         self.order_frame = OrderViewClass(self.menu_area, None)
