@@ -9,7 +9,7 @@ import time
 import random
 import re
 
-USER_FILE = os.path.join(os.path.dirname(__file__), "D:/Pycharm/Pub-Simulator_Python-Interface/Database/UsersDB.json")
+USER_FILE = os.path.join(os.path.dirname(__file__), "Database", "UsersDB.json")
 USER_FILE = os.path.abspath(USER_FILE)  # absolute route
 
 # if os.path.exists(USER_FILE):
