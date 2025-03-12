@@ -9,8 +9,9 @@ import time
 import random
 import re
 
-USER_FILE = os.path.join(os.path.dirname(__file__), "Database", "UsersDB.json")
-USER_FILE = os.path.abspath(USER_FILE)  # absolute route
+USER_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Database", "UsersDB.json")
+USER_FILE = os.path.abspath(USER_FILE)
+
 
 # if os.path.exists(USER_FILE):
 #     print(f"✅ UsersDB.json found at: {os.path.abspath(USER_FILE)}")

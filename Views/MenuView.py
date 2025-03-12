@@ -2,15 +2,14 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk  
 
-class MenuView(tk.Tk):
-    def __init__(self, controller):
-        super().__init__()
-        
+class MenuView(tk.Frame):
+    def __init__(self, root, controller):
+        super().__init__(root)
         self.controller = controller
         
         # Window setup
-        self.title("Menu Management")
-        self.geometry("1800x900")  # Enlarged window size
+        # self.title("Menu Management")
+        # self.geometry("1800x900")  # Enlarged window size
 
         # Left category panel
         self.left_frame = tk.Frame(self, width=300)
@@ -24,7 +23,7 @@ class MenuView(tk.Tk):
         self.right_frame.grid_rowconfigure(0, weight=1)
 
         # Scrollable canvas
-        self.canvas = tk.Canvas(self.right_frame, width=800, height=600)  # Made it much larger
+        self.canvas = tk.Canvas(self.right_frame, width=800, height=400)  # Made it much larger
         self.scrollbar = tk.Scrollbar(self.right_frame, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
