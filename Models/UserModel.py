@@ -75,46 +75,50 @@ class UserModel:
 
     def login(self, identifier, password):
         if identifier in self.failed_attempts and self.failed_attempts[identifier] >= 5:
-            return "locked"  # Account locked
+            return {"status":"locked"}  # account locked
 
         for user in self.users:
             if str(user.id) == identifier or user.name == identifier or user.method == identifier:
                 if user.password == password:
-                    self.failed_attempts[identifier] = 0  # Reset failed attempts on successful login
-                    return user  # Return the User object
+                    self.failed_attempts[identifier] = 0  # successfully logged in
+                    return {"status":"success", "use_list":user}  # return user list
                 else:
                     self.failed_attempts[identifier] = self.failed_attempts.get(identifier, 0) + 1
+                    #check is this identifier exist in failed_attempts, if yes add 1, if no set default 0 and add 1
                     remaining_attempts = 5 - self.failed_attempts[identifier]
-                    return f"wrong_password:{remaining_attempts}" if remaining_attempts > 0 else "locked"
+                    if remaining_attempts > 0:
+                        return {"status":"wrong_password", "attempts":remaining_attempts} #return remain attempts
+                    else :
+                        return {"status":"locked"} #account locked
 
-        return "not_found"  # Account does not exist
+        return {"status":"not_found" } # user not found
 
     def show_balance(self, user):
         # Show balance - in future versions, different display methods can be used
         print(f"Your balance: {user.balance} ")
 
     def register(self, name, password, type_of_user, method):
-        # Provide a registration option for regular customers
+        # Generate a unique user ID
         new_id = random.randint(1000, 9999)
         while any(user.id == new_id for user in self.users):
-            # Ensure the ID is unique
-            new_id = random.randint(1000, 9999)
+            new_id = random.randint(1000, 9999)  # Ensure the ID is unique
 
-        # Check username format: only letters, numbers, and spaces are allowed
-        if not name or not re.fullmatch(r"[A-Za-z0-9 ]{3,20}", name):
-            print("Invalid username! Using your ID as the username.")
-            name = str(new_id)  # If invalid, use ID instead.
-
-        # Registration method must be email or phone number
+        # Registration method (email or phone number)
         if not method or not re.fullmatch(r"(\w+@\w+\.\w+|\d{10,15})", method):
-            print("Invalid method! Using your ID as the method.")
-            method = str(new_id)  # If invalid, use ID instead.
+            if method == "empty" :  #if user didn't type any method, use user id instead.
+                print("detected empty method, use userid instead.")
+                method = str(new_id)
+            else:
+                print("Invalid method!")
+                return {"status":"invalid"}
 
+        # Create a new user
         new_user = UserList(name, password, type_of_user, method=method, user_id=new_id)
         self.users.append(new_user)
         self.save_users()
+
         print(f"Registration successful! Your user ID is {new_id}")
-        return new_user
+        return {"status": "success", "new_user": new_user}
 
     def type_of_user_ident(self, user):
         # Customers and bartenders will be redirected to different pages upon login
