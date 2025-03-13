@@ -94,5 +94,13 @@
         "type_of_user": "customer",
         "balance": 0.0,
         "method": "7810"
+    },
+    {
+        "id": 9019,
+        "name": "amily",
+        "password": "1122",
+        "type_of_user": "customer",
+        "balance": 0.0,
+        "method": "1212121212"
     }
 ]
