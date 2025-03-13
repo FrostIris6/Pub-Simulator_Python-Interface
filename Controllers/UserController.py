@@ -1,5 +1,4 @@
 from tkinter import messagebox
-from Models.UserModel import UserList
 
 class UserController:
     """Manages user login, registration, and logout logic"""
@@ -11,21 +10,30 @@ class UserController:
         """Handles user login"""
         result = self.user_model.login(identifier, password)
 
-        if isinstance(result, UserList):  # Login successful
-            self.current_user = result
-            return {"status": "success", "type_of_user": result.type_of_user}  # return flag and type of user
-        elif result == "locked":  # Account is locked
-            return {"status": "success"}
-        elif result.startswith("wrong_password"):
-            return {"status": "wrong_password"}  # Example: "wrong_password:3"
+        if result["status"] == "success":  # Login successful
+            self.current_user = result["use_list"]
+            self.user_id = result["use_list"].id
+            self.type_of_user = result["use_list"].type_of_user
+            return {"status": "success", "user_id": self.user_id, "type_of_user": self.type_of_user}  # return flag and type of user
+        elif result["status"] == "wrong_password":
+            self.attempts = result["attempts"]
+            return {"status": "wrong_password","attempts":self.attempts}  # Example: "wrong_password:3"
+        elif result["status"] == "locked":
+            return {"status": "locked"}  # User locked
         else:
             return {"status": "not_found"}  # User not found
 
     def register(self, name, password, user_type, contact):
         """Handles user registration"""
         new_user = self.user_model.register(name, password, user_type, contact)
-        if new_user:
-            messagebox.showinfo("Success", f"Registration successful! Your ID is {new_user.id}")
+
+        if new_user["status"] == "success":
+            self.new_id = new_user["new_user"].id
+            return {"success": "yes", "user_id": self.new_id }
+        elif new_user["status"] == "invalid":
+            return {"success": "Invalid"}
+        else:
+            return {"success": "no", "message": "Registration failed. Please check your input."}
 
     def logout(self):
         """Handles user logout"""
