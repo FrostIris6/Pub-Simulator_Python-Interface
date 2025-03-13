@@ -140,6 +140,7 @@ class LoginView:
 
             if result == "success":
                 print("on_finish() - Login successful")
+                self.user_id = input_values["identifier"]  # store user_id
                 self.on_update_customer_view()
                 messagebox.showinfo("Login Successful!", "Welcome!")
                 self.attempts = 5
@@ -191,8 +192,9 @@ class RegisterView:
 class TableChoice:
     """Handles the table selection functionality."""
 
-    def __init__(self, root, on_finish):
+    def __init__(self, root, login_view, on_finish):
         self.root = root
+        self.login_view = login_view  # Load LoginView to get user_id
         self.on_finish = on_finish
         self.table_choice = None  # Store the selected table
 
@@ -207,15 +209,22 @@ class TableChoice:
 
         # Create buttons for tables 1-6
         for i in range(1, 7):
-            btn = tk.Button(top_window, text=f"Table {i}", command=lambda table=i: self.on_table_selected(table, top_window))
+            btn = tk.Button(top_window, text=f"Table {i}",
+                            command=lambda table=i: self.on_table_selected(table, top_window))
             btn.pack(pady=5)
 
-        # Run the window to wait for user selection
+        # Keep the window in the foreground, waiting for user selection
         top_window.grab_set()
         top_window.wait_window()
 
     def on_table_selected(self, table, top_window):
-        """When a table is selected, save the choice and close the window."""
+        """When the user selects a table, store the choice and close the window."""
         self.table_choice = table
-        self.on_finish(self.table_choice)  # Call the on_finish callback and pass table_choice
+        user_id = self.login_view.user_id if self.login_view.user_id else "default"  # Get user_id directly from LoginView
+
+        result = {"table_choice": self.table_choice, "user_id": user_id}
+        self.on_finish(result)  # Callback function to return the selected data
+
         top_window.destroy()  # Close the window
+
+

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     #Create LoginView
     login_view = LoginView(root, user_controller, lambda: customer_view.update_ui())
     register_view = RegisterView(root, user_controller)
-    table_choice_view = TableChoice(root, None)
+    table_choice_view = TableChoice(root, login_view, None)
 
     #Create CustomerView
     customer_view = CustomerView(main_view.user_area, user_controller, login_view, register_view, table_choice_view)
