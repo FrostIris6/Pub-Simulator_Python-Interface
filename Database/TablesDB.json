@@ -1,0 +1,63 @@
+[
+    {
+        "table_id": 1,
+        "number_of_seats": 4,
+        "status": "occupied",
+        "order_list": [],
+        "product_list": [],
+        "customer_list": []
+    },
+    {
+        "table_id": 2,
+        "number_of_seats": 4,
+        "status": "free",
+        "order_list": [
+            101,
+            102
+        ],
+        "product_list": [],
+        "customer_list": []
+    },
+    {
+        "table_id": 3,
+        "number_of_seats": 4,
+        "status": "free",
+        "order_list": [],
+        "product_list": [],
+        "customer_list": []
+    },
+    {
+        "table_id": 4,
+        "number_of_seats": 8,
+        "status": "reserved",
+        "order_list": [
+            103
+        ],
+        "product_list": [
+            302,
+            303,
+            304
+        ],
+        "customer_list": [
+            "Charlie",
+            "David",
+            "Eve"
+        ]
+    },
+    {
+        "table_id": 5,
+        "number_of_seats": 2,
+        "status": "free",
+        "order_list": [],
+        "product_list": [],
+        "customer_list": []
+    },
+    {
+        "table_id": 6,
+        "number_of_seats": 2,
+        "status": "free",
+        "order_list": [],
+        "product_list": [],
+        "customer_list": []
+    }
+]
