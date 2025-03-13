@@ -9,7 +9,7 @@ class MainView:
         self.user_controller = user_controller
         self.menu_controller = menu_controller
         self.root.title("Main View")
-        self.root.geometry("1280x800")  # Approximate resolution for a 10-inch tablet
+        self.root.geometry("1440x800")  # Approximate resolution for a 10-inch tablet
         self.root.configure(bg="white")
 
         # Initialize the main layout
@@ -28,7 +28,7 @@ class MainView:
         #     btn.pack(pady=10, padx=10)
 
         # Right-side user information & menu display area
-        self.main_content = Frame(self.root, bg="white", width=1080, height=800)
+        self.main_content = Frame(self.root, bg="white", width=1440, height=800)
         self.main_content.pack(side="right", fill="both", expand=True)
 
         # Upper-right section (User info display area)
@@ -38,17 +38,22 @@ class MainView:
         self.user_label = Label(self.user_area, text="User Info Here", font=("Arial", 16), bg="#f0f0f0")
         self.user_label.pack(pady=20)
 
-        # Lower-right section (Menu display area)
-        self.menu_area = Frame(self.main_content, bg="white")
-        self.menu_area.pack(fill="both", expand=True)
+        # bottom section for menu and order
+        self.bottom_aera = Frame(self.main_content, bg="white")
+        self.bottom_aera.pack(fill="both", expand=True)
+
+        # Lower-left section (Menu display area)
+        self.menu_area = Frame(self.bottom_aera, bg="white")
+        self.menu_area.pack(side="left", fill="both", expand=True)
+
+        self.order_area = Frame(self.bottom_aera, bg="white")
+        self.order_area.pack(side="left", fill="both", expand=True)
         
         self.menu_frame = MenuView(self.menu_area, self.menu_controller)
         self.menu_frame.pack(fill="both", expand=True)
-
+        # menu and order can't show complete view both, I think reason is from their own codes, not outer frame or pack
         # put order frame here
-        self.order_frame = OrderViewClass(self.menu_area, None)
-        # self.menu_label = Label(self.menu_area, text="Menu Content Here", font=("Arial", 16), bg="white")
-        # self.menu_label.pack(pady=20)
+        self.order_frame = OrderViewClass(self.order_area, None)
 
     def set_user_view(self, view):
         """Set and display the user view."""

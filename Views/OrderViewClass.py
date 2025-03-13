@@ -16,19 +16,16 @@ class OrderViewClass:
         # 创建 confirm_order 面板
         self.confirm_panel = tk.Frame(root, width=560, height=100, bg="lightgray")
         self.confirm_panel.pack(side="bottom", fill="x", expand=False)  # 固定在底部
-        self.confirm_panel.pack_propagate(False)  # 禁止 Frame 根据子组件调整大小
         self.init_confirm_order()
 
         # 创建 order_title 面板
         self.order_title = tk.Frame(root, width=560, height=50, bg="lightgray")
         self.order_title.pack(side="top", fill="x", expand=False)  # 固定在顶部
-        self.order_title.pack_propagate(False)
         self.init_title_order()
 
         # 创建主 order 面板
         self.order_panel = tk.Frame(root, width=560, height=550, bg="white")
         self.order_panel.pack(side="top", fill="both", expand=True)
-        self.order_panel.pack_propagate(False)
 
         # # 让窗口根据内容自动调整大小
         # self.root.update()  # 更新窗口布局
@@ -45,11 +42,11 @@ class OrderViewClass:
 
         # 结算按钮
         checkout_button = tk.Button(button_frame, text="Place the order", command=self.checkout_window, width=20, height=2)
-        checkout_button.grid(row=0, column=0, padx=60) #不知道为什么pack的side没用，grid的sticky也没用，不管怎么设置都是贴着放的
+        checkout_button.grid(row=0, column=0, padx=10) #不知道为什么pack的side没用，grid的sticky也没用，不管怎么设置都是贴着放的
 
         # 临时设置桌号按钮
         temp_button = tk.Button(button_frame, text="Table Confirmation", command=self.temp_button, width=20, height=2)
-        temp_button.grid(row=0, column=1, padx=60)
+        temp_button.grid(row=0, column=1, padx=10)
 
     def init_title_order(self):
         # 订单标题
