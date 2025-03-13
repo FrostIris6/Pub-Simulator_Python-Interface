@@ -5,104 +5,87 @@ from Controllers.TableController import TableController
 from Models.TableModel import TableModel
 
 class BartenderView(tk.Tk):
-    """ Modernized GUI for managing tables and bar representation. """
+    """ MVC View for managing tables and displaying orders visually. """
 
-    def __init__(self, controller):
+    def __init__(self, controller: TableController):
         super().__init__()
         self.controller = controller
-        self.title("Bartender View - Modern Table Management")
+        self.title("Bartender View")
         self.geometry("1000x700")
-        self.configure(bg="#F7F9FC")  # Light background
+        self.configure(bg="#F7F9FC")
 
-        # Legend for Table Status
+        # Create legend for table statuses
         self.create_legend()
 
-        # Canvas for Tables
-        self.canvas = tk.Canvas(self, width=900, height=600, bg="white", highlightthickness=0)
-        self.canvas.pack(pady=10, fill="both", expand=True)
+        # Create canvas to draw tables
+        self.canvas = tk.Canvas(self, bg="white")
+        self.canvas.pack(expand=True, fill="both")
 
+        # Draw initial tables and bar
         self.draw_tables()
         self.draw_bar()
 
     def create_legend(self):
-        """ Creates a legend to explain table colors. """
-        legend_frame = tk.Frame(self, bg="#F7F9FC")
-        legend_frame.pack(pady=5, fill="x", padx=20)
+        """ Creates a legend to explain colors representing table statuses. """
+        legend = tk.Frame(self, bg="#F7F9FC")
+        legend.pack(pady=10)
 
-        legends = [
-            ("Empty", "#E3F2FD"),
-            ("Reserved", "#3E5C76"),  # Lighter blue for better text contrast
-            ("Occupied", "#90CAF9"),
-            ("Bar", "#607D8B")
-        ]
-
-        for text, color in legends:
-            tk.Label(legend_frame, text="  ", bg=color, width=2, height=1, relief="solid").pack(side="left", padx=5)
-            tk.Label(legend_frame, text=text, font=("Arial", 12), bg="#F7F9FC").pack(side="left", padx=10)
+        statuses = [("Free", "#E3F2FD"), ("VIP", "#FFD700"), ("Occupied", "#90CAF9"), ("Bar", "#607D8B")]
+        for status, color in statuses:
+            tk.Label(legend, bg=color, width=2, height=1).pack(side="left", padx=5)
+            tk.Label(legend, text=status, bg="#F7F9FC").pack(side="left", padx=10)
 
     def draw_tables(self):
-        """ Draw tables on the canvas. """
+        """ Fetch tables from controller and visually represent them. """
         self.canvas.delete("all")
-        tables = self.controller.get_tables()
+        tables = self.controller.model.tables
 
-        if not tables:
-            self.canvas.create_text(450, 300, text="No tables available", font=("Arial", 16))
-            return
+        positions = [(150, 150), (350, 150), (550, 150), (150, 350), (350, 350), (550, 350)]
 
-        row_positions = [150, 300, 450]  # Three row positions
-        col_start = 120
-        col_spacing = 200
+        for table, position in zip(tables, positions):
+            color = "#E3F2FD" if table.status == "free" else "#FFD700" if table.status == "VIP" else "#90CAF9"
 
-        for index, table in enumerate(tables):
-            row = index % 3  # Distribute tables into 3 rows
-            x = col_start + (index // 3) * col_spacing
-            y = row_positions[row]
+            # Draw each table as a rectangle
+            x, y = position
+            rect = self.canvas.create_rectangle(x-50, y-30, x+50, y+30, fill=color, tags=f"table_{table.table_id}")
+            self.canvas.create_text(x, y, text=f"Table {table.table_id}\n{table.status}")
 
-            color = "#E3F2FD" if table["status"] == "free" else "#3E5C76" if table["status"] == "reserved" else "#90CAF9"
-
-            # Table size based on seats
-            width = 80 + (table["number_of_seats"] * 5)
-            height = 50 + (table["number_of_seats"] * 3)
-
-            # Draw rectangle tables
-            self.canvas.create_rectangle(x - width//2, y - height//2, x + width//2, y + height//2,
-                                         fill=color, outline="#B0BEC5", tags=f"table_{table['table_id']}")
-
-            self.canvas.create_text(x, y, text=f"Table {table['table_id']}\n{table['status'].capitalize()}",
-                                    font=("Arial", 12, "bold"), fill="white", tags=f"table_{table['table_id']}")
-
-            self.canvas.tag_bind(f"table_{table['table_id']}", "<Button-1>", lambda event, t=table: self.open_status_popup(t))
+            # Bind click event to open details popup
+            self.canvas.tag_bind(rect, "<Button-1>", lambda e, t=table: self.show_table_orders(t))
 
     def draw_bar(self):
-        """ Draws the bar section as a fixed rectangle on the right side. """
-        bar_x, bar_y, bar_width, bar_height = 780, 100, 120, 500  # Bar dimensions
-        self.canvas.create_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height,
-                                     fill="#607D8B", outline="black", tags="bar")
-        self.canvas.create_text(bar_x + bar_width / 2, bar_y + bar_height / 2,
-                                text="BAR", font=("Arial", 14, "bold"), fill="white", tags="bar")
+        """ Draws a visual representation of the bar area. """
+        self.canvas.create_rectangle(750, 100, 950, 600, fill="#607D8B")
+        self.canvas.create_text(850, 350, text="BAR", fill="white", font=("Arial", 20, "bold"))
 
-    def open_status_popup(self, table):
-        """ Open a popup window to change table status. """
+    def show_table_orders(self, table):
+        """ Opens a popup to display table details without manual status change. """
         popup = tk.Toplevel(self)
-        popup.title(f"Change Status - Table {table['table_id']}")
+        popup.title(f"Table {table.table_id} Details")
         popup.geometry("300x150")
 
-        tk.Label(popup, text=f"Change status for Table {table['table_id']}", font=("Arial", 12, "bold")).pack(pady=10)
-        status_var = tk.StringVar(value=table["status"])
-        status_dropdown = ttk.Combobox(popup, textvariable=status_var, values=["free", "reserved", "occupied"])
-        status_dropdown.pack(pady=5)
+        tk.Label(popup, text=f"Table {table.table_id} Status: {table.status}",
+                 font=("Arial", 14, "bold")).pack(pady=10)
 
-        tk.Button(popup, text="Update Status", command=lambda: self.update_status(table, status_var.get(), popup)).pack(pady=10)
+        # Visa kunder
+        customers = ", ".join(table.customer_list) if table.customer_list else "No customers"
+        tk.Label(popup, text=f"Customers: {customers}").pack(pady=5)
 
-    def update_status(self, table, new_status, popup):
-        """ Send update request to controller. """
-        self.controller.update_table_status(table["table_id"], new_status)
+        # Visa produkter
+        products = ", ".join(str(p) for p in table.product_list) if table.product_list else "No products"
+        tk.Label(popup, text=f"Products: {products}").pack(pady=5)
+
+    def update_status(self, table_id, new_status, popup):
+        """ Updates table status via controller and refreshes the view. """
+        table = self.controller.model.get_table_by_id(table_id)
+        table.status = new_status
+        self.controller.model.update_table(table)
         self.draw_tables()
         popup.destroy()
-        messagebox.showinfo("Status Updated", f"Table {table['table_id']} is now {new_status}")
+        messagebox.showinfo("Update", f"Table {table_id} status updated to {new_status}.")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     model = TableModel()
     controller = TableController(model)
     app = BartenderView(controller)
-    app.mainloop
+    app.mainloop()

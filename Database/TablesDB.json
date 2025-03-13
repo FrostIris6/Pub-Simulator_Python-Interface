@@ -2,7 +2,7 @@
     {
         "table_id": 1,
         "number_of_seats": 4,
-        "status": "occupied",
+        "status": "free",
         "order_list": [],
         "product_list": [],
         "customer_list": []
@@ -10,7 +10,7 @@
     {
         "table_id": 2,
         "number_of_seats": 4,
-        "status": "free",
+        "status": "occupied",
         "order_list": [
             101,
             102
@@ -29,20 +29,14 @@
     {
         "table_id": 4,
         "number_of_seats": 8,
-        "status": "reserved",
-        "order_list": [
-            103
-        ],
+        "status": "occupied",
+        "order_list": [],
         "product_list": [
             302,
             303,
             304
         ],
-        "customer_list": [
-            "Charlie",
-            "David",
-            "Eve"
-        ]
+        "customer_list": []
     },
     {
         "table_id": 5,
@@ -58,6 +52,6 @@
         "status": "free",
         "order_list": [],
         "product_list": [],
-        "customer_list": []
+        "customer_list": [1005]
     }
 ]
