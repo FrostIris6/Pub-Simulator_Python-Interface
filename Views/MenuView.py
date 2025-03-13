@@ -13,17 +13,17 @@ class MenuView(tk.Frame):
 
         # Left category panel
         self.left_frame = tk.Frame(self, width=300)
-        self.left_frame.grid(row=0, column=0, padx=10, pady=100, sticky="nsw")
+        self.left_frame.grid(row=0, column=0, padx=10, pady=0, sticky="nsw")
         self.left_frame.grid_columnconfigure(0, weight=0)
 
         # Main display area
         self.right_frame = tk.Frame(self)
-        self.right_frame.grid(row=0, column=1, padx=10, pady=100, sticky="nsew")
+        self.right_frame.grid(row=0, column=1, padx=10, pady=0, sticky="nsew")
         self.right_frame.grid_columnconfigure(0, weight=1)
         self.right_frame.grid_rowconfigure(0, weight=1)
 
         # Scrollable canvas
-        self.canvas = tk.Canvas(self.right_frame, width=800, height=400)  # Made it much larger
+        self.canvas = tk.Canvas(self.right_frame, width=500, height=550)  
         self.scrollbar = tk.Scrollbar(self.right_frame, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
@@ -44,32 +44,38 @@ class MenuView(tk.Frame):
             btn.grid(row=i, column=0, pady=5)
             self.category_buttons[category] = btn
 
-        # Product list
+        # Product list 
         self.product_label = tk.Label(self.scrollable_frame, text="Products", font=("Arial", 20))
-        self.product_label.grid(row=0, column=0, pady=10)
+        self.product_label.grid(row=0, column=0, pady=10, sticky="w")
 
-        self.product_listbox = tk.Listbox(self.scrollable_frame, width=100, height=10, selectmode=tk.SINGLE)  # Much bigger listbox
-        self.product_listbox.grid(row=1, column=0, padx=10, pady=10)
+        # Create a frame for the product list
+        self.product_frame = tk.Frame(self.scrollable_frame)
+        self.product_frame.grid(row=1, column=0, padx=10, pady=10, sticky="w")  # Align left
+
+        self.product_listbox = tk.Listbox(self.product_frame, width=50, height=10, selectmode=tk.SINGLE)  # Half the width
+        self.product_listbox.pack()
+
         self.product_listbox.bind('<<ListboxSelect>>', self.on_product_select)
 
-        # Stock update form
+        # Stock update section
         self.stock_label = tk.Label(self.scrollable_frame, text="Update Stock", font=("Arial", 16, "bold"))
-        self.stock_label.grid(row=2, column=0, pady=10)
+        self.stock_label.grid(row=2, column=0, pady=10, sticky="w")  # Aligned left
 
         self.stock_name_label = tk.Label(self.scrollable_frame, text="Product Name:")
-        self.stock_name_label.grid(row=3, column=0, padx=5, pady=5)
+        self.stock_name_label.grid(row=3, column=0, padx=5, pady=5, sticky="w")  # Aligned left
 
         self.stock_name = tk.Label(self.scrollable_frame, text="", font=("Arial", 12, "bold"))
-        self.stock_name.grid(row=3, column=1, padx=5, pady=5)
+        self.stock_name.grid(row=3, column=1, padx=5, pady=5, sticky="w")  # Next to label
 
         self.stock_input_label = tk.Label(self.scrollable_frame, text="New Stock Quantity:")
-        self.stock_input_label.grid(row=4, column=0, padx=5, pady=5)
+        self.stock_input_label.grid(row=4, column=0, padx=5, pady=5, sticky="w")  # Aligned left
 
-        self.stock_input = tk.Entry(self.scrollable_frame, width=15)
-        self.stock_input.grid(row=4, column=1, padx=5, pady=5)
+        self.stock_input = tk.Entry(self.scrollable_frame, width=10)
+        self.stock_input.grid(row=4, column=1, padx=5, pady=5, sticky="w")  # Aligned left
 
         self.update_stock_button = tk.Button(self.scrollable_frame, text="Update Stock", command=self.update_stock)
-        self.update_stock_button.grid(row=5, column=0, columnspan=2, pady=10)
+        self.update_stock_button.grid(row=5, column=1, columnspan=2, pady=10, sticky="w")  # Left-aligned button
+
 
         # Product details
         self.photo_label = tk.Label(self.scrollable_frame, text="Product Photo:")

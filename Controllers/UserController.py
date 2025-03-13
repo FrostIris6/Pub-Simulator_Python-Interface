@@ -13,13 +13,13 @@ class UserController:
 
         if isinstance(result, UserList):  # Login successful
             self.current_user = result
-            return "success"
+            return {"status": "success", "type_of_user": result.type_of_user}  # return flag and type of user
         elif result == "locked":  # Account is locked
-            return "locked"
+            return {"status": "success"}
         elif result.startswith("wrong_password"):
-            return result  # Example: "wrong_password:3"
+            return {"status": "wrong_password"}  # Example: "wrong_password:3"
         else:
-            return "not_found"  # User not found
+            return {"status": "not_found"}  # User not found
 
     def register(self, name, password, user_type, contact):
         """Handles user registration"""

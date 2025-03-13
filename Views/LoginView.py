@@ -138,14 +138,15 @@ class LoginView:
             print("on_finish() - Checking credentials")
             result = self.controller.login(input_values["identifier"], input_values["password"])
 
-            if result == "success":
+            if result["status"] == "success":
                 print("on_finish() - Login successful")
                 self.user_id = input_values["identifier"]  # store user_id
+                self.user_type = result["type_of_user"]  # store type of user
                 self.on_update_customer_view()
                 messagebox.showinfo("Login Successful!", "Welcome!")
                 self.attempts = 5
                 self.form.top_window.destroy()
-            else:
+            elif result["status"] == "wrong_password":
                 print(f"on_finish() - Login failed, attempts remaining: {self.attempts}")
                 self.attempts -= 1
                 if self.attempts > 0:
@@ -157,6 +158,10 @@ class LoginView:
                     messagebox.showerror("Account Locked",
                                          "Your account has been locked due to too many failed attempts.")
                     self.form.top_window.destroy()  # Close the login window after too many attempts
+            elif result["status"] == "locked":
+                messagebox.showerror("Account Locked", "Your account is locked due to too many failed attempts.")
+            else:
+                messagebox.showerror("Login Failed", "User not found.")
 
         print("login() - Creating MultiStepForm")
         self.form = MultiStepForm(self.root, steps, on_finish)

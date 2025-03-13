@@ -35,7 +35,7 @@ class MainView:
         self.user_area = Frame(self.main_content, bg="#f0f0f0", height=150)
         self.user_area.pack(fill="x")
 
-        self.user_label = Label(self.user_area, text="User Info Here", font=("Arial", 16), bg="#f0f0f0")
+        self.user_label = Label(self.user_area, text="Welcome to the BAR !!", font=("Arial", 16), bg="#f0f0f0")
         self.user_label.pack(pady=20)
 
         # bottom section for menu and order
