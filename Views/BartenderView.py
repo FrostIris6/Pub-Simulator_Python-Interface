@@ -3,47 +3,41 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 from Controllers.TableController import TableController
 
-class BartenderView(tk.Tk):
-    """ MVC View for managing tables and displaying orders visually. """
+class BartenderView(tk.Frame):
+    """MVC View for managing tables and visually displaying their statuses."""
 
-    def __init__(self, controller: TableController):
-        super().__init__()
+    def __init__(self, parent, controller: TableController):
+        super().__init__(parent)
         self.controller = controller
-        self.title("Bartender View")
-        self.geometry("1000x700")
         self.configure(bg="#F7F9FC")
 
-        # Huvudram som täcker hela fönstret
+        # Main frame covering the entire view
         self.main_frame = tk.Frame(self, bg="#F7F9FC")
         self.main_frame.pack(fill="both", expand=True)
 
-        # Övre panel (fast element)
+        # Top fixed frame containing the legend
         self.top_frame = tk.Frame(self.main_frame, bg="#F7F9FC", height=50)
         self.top_frame.pack(fill="x", side="top")
 
-        # Nedre ram (delar upp canvas och högerpanel)
+        # Bottom frame that holds the canvas for tables and bar
         self.bottom_frame = tk.Frame(self.main_frame, bg="#FFFFFF")
         self.bottom_frame.pack(fill="both", expand=True)
 
-        # Canvas-område (2/3 av skärmen)
-        self.canvas_frame = tk.Frame(self.bottom_frame, bg="white", width=600)
-        self.canvas_frame.pack(side="left", expand=True, fill="both")
+        # Canvas frame for tables and bar visuals
+        self.canvas_frame = tk.Frame(self.bottom_frame, bg="white")
+        self.canvas_frame.pack(expand=True, fill="both")
 
+        # Canvas for drawing tables and bar
         self.canvas = tk.Canvas(self.canvas_frame, bg="white")
         self.canvas.pack(expand=True, fill="both")
 
-        # NY HÖGERPANEL (grå, tar upp 1/3 av skärmen)
-        self.right_panel = tk.Frame(self.bottom_frame, bg="#E0E0E0", width=400)
-        self.right_panel.pack(side="right", fill="y")
-
-        # Rita befintliga komponenter
+        # Initialize the interface components
         self.create_legend()
         self.draw_tables()
         self.draw_bar()
 
     def create_legend(self):
-        """ Creates a legend to explain colors representing table statuses. """
-        # Placera legenden inuti top_frame och vänsterjustera den tydligt.
+        """Creates a legend explaining table status colors."""
         legend = tk.Frame(self.top_frame, bg="#F7F9FC")
         legend.pack(pady=10, anchor="w", padx=15)
 
@@ -53,30 +47,32 @@ class BartenderView(tk.Tk):
             tk.Label(legend, text=status, bg="#F7F9FC").pack(side="left", padx=10)
 
     def draw_tables(self):
-        """ Fetch tables from controller and visually represent them. """
+        """Fetches tables from the controller and visually represents them on the canvas."""
         self.canvas.delete("all")
         tables = self.controller.model.tables
 
+        # Define positions for each table visually
         positions = [(150, 120), (350, 120),
                      (150, 280), (350, 280),
                      (150, 440), (350, 440)]
 
+        # Iterate over tables and their positions to draw them
         for table, position in zip(tables, positions):
+            # Select color based on table status
             color = "#E3F2FD" if table.status == "free" else "#FFD700" if table.status == "VIP" else "#90CAF9"
 
-            # Draw each table as a rectangle
+            # Draw table rectangle and status
             x, y = position
             rect = self.canvas.create_rectangle(x-50, y-30, x+50, y+30, fill=color, tags=f"table_{table.table_id}")
             self.canvas.create_text(x, y, text=f"Table {table.table_id}\n{table.status}")
 
-
     def draw_bar(self):
-        """ Draws a visual representation of the bar area. """
+        """Draws a visual representation of the bar area."""
         self.canvas.create_rectangle(650, 100, 750, 600, fill="#607D8B")
         self.canvas.create_text(700, 350, text="BAR", fill="white", font=("Arial", 20, "bold"))
 
     def show_table_orders(self, table):
-        """ Opens a popup to show orders and allows changing table status. """
+        """Opens a popup window to display orders and allow status changes for a specific table."""
         popup = tk.Toplevel(self)
         popup.title(f"Table {table.table_id} Details")
         popup.geometry("300x200")
@@ -93,11 +89,12 @@ class BartenderView(tk.Tk):
         update_button.pack(pady=10)
 
     def update_status(self, table_id, new_status, popup):
-        """ Updates table status via controller and refreshes the view. """
+        """Updates the table's status through the controller and refreshes the canvas."""
         table = self.controller.model.get_table_by_id(table_id)
         table.status = new_status
         self.controller.model.update_table(table)
         self.draw_tables()
         popup.destroy()
         messagebox.showinfo("Update", f"Table {table_id} status updated to {new_status}.")
+
 

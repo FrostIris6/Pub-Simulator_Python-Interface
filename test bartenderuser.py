@@ -1,33 +1,37 @@
 import tkinter as tk
-from Models.UserModel import UserModel
 from Models.TableModel import TableModel
-from Controllers.UserController import UserController
 from Controllers.TableController import TableController
+from Controllers.Order_bar_controller import EnhancedOrderController
 from Views.BartenderView import BartenderView
+from Views.Order_bar_view import OrderListView
 
 if __name__ == "__main__":
     root = tk.Tk()
+    root.title("Combined Bar Management")
+    root.geometry("1200x700")
 
-    # Initialize the models
-    user_model = UserModel()
+    # Initialize models and controllers
     table_model = TableModel()
-
-    # Initialize the controllers
-    user_controller = UserController(user_model)
     table_controller = TableController(table_model)
+    order_controller = EnhancedOrderController()
 
-    # Create BartenderView passing the controllers
-    bartender_view = BartenderView(table_controller)
+    # Main frame to hold the two views
+    main_frame = tk.Frame(root, bg="#F7F9FC")
+    main_frame.pack(fill="both", expand=True)
 
-    # Here you could set up a specific bartender test-user if needed, for example:
-    test_user = {
-        "user_id": 2001,
-        "name": "Bartender Bob",
-        "role": "bartender",
-        "balance": 0
-    }
+    # Left side - BartenderView (narrower now)
+    bartender_view = BartenderView(main_frame, table_controller)
+    bartender_view.pack(side="left", fill="both", expand=True)
 
-    # Optional: print test user information to console for debugging purposes
-    print(f"Logged in as {test_user['name']} with role {test_user['role']}")
+    # Right side - Order_bar_view (wider now)
+    order_list_view = OrderListView(main_frame, order_controller, main_window=root)
+    order_list_view.pack(side="right", fill="both", expand=True)
 
-    bartender_view.mainloop()
+    # Set proportional widths using grid weights
+    main_frame.columnconfigure(0, weight=2)  # BartenderView column (narrower)
+    main_frame.columnconfigure(1, weight=3)  # Order_bar_view column (wider)
+
+    root.mainloop()
+
+
+
