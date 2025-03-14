@@ -94,5 +94,29 @@
         "type_of_user": "customer",
         "balance": 0.0,
         "method": "7810"
+    },
+    {
+        "id": 8038,
+        "name": "amyli",
+        "password": "2233",
+        "type_of_user": "customer",
+        "balance": 0.0,
+        "method": "amily@google.com"
+    },
+    {
+        "id": 9389,
+        "name": "alien",
+        "password": "2333",
+        "type_of_user": "customer",
+        "balance": 0.0,
+        "method": "9389"
+    },
+    {
+        "id": 7495,
+        "name": "anna",
+        "password": "7766",
+        "type_of_user": "bartender",
+        "balance": 0.0,
+        "method": "7495"
     }
 ]

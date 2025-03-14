@@ -9,7 +9,7 @@ controllers_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 sys.path.append(controllers_path)
 
 # Import controller from Controllers directory
-from Order_bar_controller import EnhancedOrderController, initialize_test_data
+from Controllers.Order_bar_controller import EnhancedOrderController, initialize_test_data
 
 # 订单卡片组件 view card set (view part start here)
 class OrderCard(tk.Frame):

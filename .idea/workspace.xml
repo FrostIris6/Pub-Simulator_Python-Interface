@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71490437-7dbd-439a-9e78-a844446ab9bb" name="Changes" comment="Order from worker side (include view part to test)">
-      <change afterPath="$PROJECT_DIR$/Views/Order_bar-view.py" afterDir="false" />
+    <list default="true" id="71490437-7dbd-439a-9e78-a844446ab9bb" name="Changes" comment="BartenderView.py, TableModel.py and TableController.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/order_Bar_with view.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Order_bar_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TableController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TableController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/TablesDB.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database/TablesDB.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TableModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TableModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDB.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDB.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/BartenderView.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/BartenderView.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +36,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Mogyokada/Pub-Simulator_Python-Interface.git&quot;,
-    &quot;accountId&quot;: &quot;7d82b324-3b2b-4fee-8d42-d765966c9478&quot;
+    &quot;url&quot;: &quot;https://github.com/robertbarbu22/Pub-Simulator_Python-Interface.git&quot;,
+    &quot;accountId&quot;: &quot;80f20a83-384f-491c-ab53-1fe83df1b3c3&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -44,17 +48,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.OrderController.executor&quot;: &quot;Run&quot;,
-    &quot;Python.order_Bar_with view.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.BartenderView.executor": "Run",
+    "Python.MainView.executor": "Run",
+    "Python.OrderController.executor": "Run",
+    "Python.Order_bar-view.executor": "Run",
+    "Python.Order_bar_controller.executor": "Run",
+    "Python.TableController.executor": "Run",
+    "Python.TableModel.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.order_Bar_with view.executor": "Run",
+    "Python.test user.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Python.Order_bar-view">
+}]]></component>
+  <component name="RunManager">
     <configuration name="OrderController" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Pub-Simulator_Python-Interface" />
       <option name="ENV_FILES" value="" />
@@ -68,6 +86,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/OrderController.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -90,6 +109,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/Order_bar-view.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -112,6 +132,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="D:\python study\Pub-Simulator_Python-Interface\Controllers\Order_bar_controller.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -123,8 +144,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Order_bar-view" />
         <item itemvalue="Python.Order_bar_controller" />
+        <item itemvalue="Python.Order_bar-view" />
         <item itemvalue="Python.OrderController" />
       </list>
     </recent_temporary>
@@ -132,7 +153,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PY-243.23654.177" />
+        <option value="bundled-python-sdk-91d3a02ef49d-43b77aa2d136-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.23654.177" />
       </set>
     </attachedChunks>
   </component>
@@ -144,6 +166,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741362216946</updated>
+      <workItem from="1741867483231" duration="6689000" />
+      <workItem from="1741874396696" duration="5695000" />
     </task>
     <task id="LOCAL-00001" summary="bar端的oder代码">
       <option name="closed" value="true" />
@@ -193,8 +217,39 @@
       <option name="project" value="LOCAL" />
       <updated>1741704145899</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="TablesDB.json">
+      <option name="closed" value="true" />
+      <created>1741867562557</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1741867562557</updated>
+    </task>
+    <task id="LOCAL−00008" summary="BartenderView.py, TableModel.py and TableController.py">
+      <option name="closed" value="true" />
+      <created>1741867735338</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1741867735339</updated>
+    </task>
+    <task id="LOCAL−00009" summary="BartenderView.py, TableModel.py and TableController.py">
+      <option name="closed" value="true" />
+      <created>1741867746268</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1741867746269</updated>
+    </task>
+    <task id="LOCAL−00010" summary="BartenderView.py, TableModel.py and TableController.py">
+      <option name="closed" value="true" />
+      <created>1741867763826</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1741867763826</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -210,6 +265,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="bar端的oder代码" />
     <MESSAGE value="Order from worker side (include view part to test)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Order from worker side (include view part to test)" />
+    <MESSAGE value="TablesDB.json" />
+    <MESSAGE value="BartenderView.py, TableModel.py and TableController.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="BartenderView.py, TableModel.py and TableController.py" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$test_user.coverage" NAME="test user Coverage Results" MODIFIED="1741877440035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$TableController.coverage" NAME="TableController Coverage Results" MODIFIED="1741871753680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Controllers" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$Order_bar_controller.coverage" NAME="Order_bar_controller Coverage Results" MODIFIED="1741875069611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Controllers" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$BartenderView.coverage" NAME="BartenderView Coverage Results" MODIFIED="1741880111900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Views" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$Order_bar_view.coverage" NAME="Order_bar-view Coverage Results" MODIFIED="1741877429171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Views" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$TableModel.coverage" NAME="TableModel Coverage Results" MODIFIED="1741872779553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Models" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$main.coverage" NAME="main Coverage Results" MODIFIED="1741869474953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pub_Simulator_Python_Interface_$MainView.coverage" NAME="MainView Coverage Results" MODIFIED="1741877416855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Views" />
   </component>
 </project>
