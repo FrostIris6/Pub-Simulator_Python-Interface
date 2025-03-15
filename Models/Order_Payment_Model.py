@@ -104,8 +104,6 @@ class OrderModel:
         #if an order created, data will be written into OrderDB.json
             with open(ORDER_FILE, "w", encoding="utf-8") as f:
                 json.dump(self.checkout_info(), f, ensure_ascii=False, indent=4)
-        else:
-            return "File not found."
 
     def clear_order(self):
         self.items = []
