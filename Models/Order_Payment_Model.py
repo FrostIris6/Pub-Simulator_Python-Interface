@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime
 from enum import Enum
 
-ORDER_FILE = "../Database/OrderDB.json"
+ORDER_FILE = "Database/OrderDB.json"
 PAYMENT_FILE = "../Database/PaymentDB.json"
 #transaction_count = 0 #begin with 0 every day,once an order created, plus 1
 
@@ -102,7 +102,6 @@ class OrderModel:
 
     def write_order(self):
         #if an order created, data will be written into OrderDB.json
-        if os.path.exists(ORDER_FILE):
             with open(ORDER_FILE, "w", encoding="utf-8") as f:
                 json.dump(self.checkout_info(), f, ensure_ascii=False, indent=4)
         else:

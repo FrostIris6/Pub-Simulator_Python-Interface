@@ -19,7 +19,7 @@ class OrderViewClass:
         self.init_confirm_order()
 
         # 创建 order_title 面板
-        self.order_title = tk.Frame(root, width=560, height=50, bg="lightgray")
+        self.order_title = tk.Frame(root, width=560, height=50, bg="lightgray")#coordinate is supposed to be x=
         self.order_title.pack(side="top", fill="x", expand=False)  # 固定在顶部
         self.init_title_order()
 
@@ -27,11 +27,14 @@ class OrderViewClass:
         self.order_panel = tk.Frame(root, width=560, height=550, bg="white")
         self.order_panel.pack(side="top", fill="both", expand=True)
 
+
+
         # # 让窗口根据内容自动调整大小
         # self.root.update()  # 更新窗口布局
         # self.root.minsize(self.root.winfo_width(), self.root.winfo_height())  # 设置窗口最小大小
 
     def init_confirm_order(self):
+
         # Sum 标签（第一行，居右）
         self.sum_label = tk.Label(self.confirm_panel, text="Sum: " + str(self.total_price), font=("Arial", 16), bg="white")
         self.sum_label.grid(row=0, column=0, padx=10, pady=5)
@@ -40,13 +43,22 @@ class OrderViewClass:
         button_frame = tk.Frame(self.confirm_panel, width=560, bg="lightgray")
         button_frame.grid(row=1, column=0, pady=5)
 
-        # 结算按钮
-        checkout_button = tk.Button(button_frame, text="Place the order", command=self.checkout_window, width=20, height=2)
+        # place the order按钮
+        checkout_button = tk.Button(button_frame, text="Place the order", command=self.place_order, width=20, height=2)
         checkout_button.grid(row=0, column=0, padx=10) #不知道为什么pack的side没用，grid的sticky也没用，不管怎么设置都是贴着放的
 
         # 临时设置桌号按钮
         temp_button = tk.Button(button_frame, text="Table Confirmation", command=self.temp_button, width=20, height=2)
         temp_button.grid(row=0, column=1, padx=10)
+
+        # check_out button
+        temp_button = tk.Button(button_frame, text="Check Out", command=self.checkout_window, width=20, height=2)
+        temp_button.grid(row=0, column=2, padx=10)
+
+    def place_order(self):
+        self.controller.place_order()
+        messagebox.showinfo("Order Confirmation", "You have placed the order successfully")
+
 
     def init_title_order(self):
         # 订单标题
@@ -73,7 +85,7 @@ class OrderViewClass:
 
     def pay_successfully(self, window):
         window.destroy()
-        self.controller.checkout_order()
+        #self.controller.checkout_order()
         self.controller.clear_order()
         self.update_items()
 
@@ -81,6 +93,7 @@ class OrderViewClass:
         self.total_price = self.controller.order.total_price()
         self.sum_label.config(text="Sum: " + str(self.total_price))
 
+        print(self.order_panel.winfo_geometry())
         # 清空 order_panel
         for widget in self.order_panel.winfo_children():
             widget.destroy()
