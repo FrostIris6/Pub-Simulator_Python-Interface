@@ -29,7 +29,7 @@ class MainView:
         self.user_label.pack(pady=20)
 
         # bottom section for menu and order
-        self.bottom_aera = Frame(self.main_content, bg="white")
+        self.bottom_aera = Frame(self.main_content, bg="white") #coordinate x=0, y=150
         self.bottom_aera.pack(fill="both", expand=True)
 
         # Lower-left section (Menu display area)

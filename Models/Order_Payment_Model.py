@@ -10,7 +10,7 @@ PAYMENT_FILE = "../Database/PaymentDB.json"
 
 class OrderModel:
 
-    def __init__(self, user_id, table_id):
+    def __init__(self, table_id, user_id=1):
 
         self.user_id = user_id
         self.table_id = table_id

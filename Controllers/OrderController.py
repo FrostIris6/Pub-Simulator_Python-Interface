@@ -13,12 +13,12 @@ from tkinter import messagebox
 
 class OrderController:
 
-    def __init__(self, view, user_id, table_id):
+    def __init__(self, view,  table_id, user_id=1 ):#user_id defaulted 1 as regular customer
 
         self.view = view #call view to receive input from window
         self.user_id = user_id
         self.table_id = table_id
-        self.order = OrderModel(user_id, table_id) #call model_layer to deal with data
+        self.order = OrderModel(table_id, user_id) #call model_layer to deal with data
         self.payment = PaymentModel(self.order)
 
 
@@ -54,8 +54,10 @@ class OrderController:
     def confirm_order(self): #please check your order before checkout
         return self.order.checkout_info()
 
-    def checkout_order(self):#enter checkout process, write bill into DB
+    def place_order(self):
         self.order.write_order()
+
+    #def checkout_order(self):#enter checkout process, write bill into DB
         # if customer_status:
         #     if self.payment._check_vip_balance():
         #         self.payment._save_payment_record()
