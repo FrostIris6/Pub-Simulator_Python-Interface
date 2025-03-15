@@ -3,19 +3,38 @@ import os
 from tkinter import messagebox
 from datetime import datetime
 
+# 导入BarModel从Models目录
+import sys
+
+models_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Models")
+if models_path not in sys.path:
+    sys.path.append(models_path)
+from Models.BarModel import BarModel
+
 
 # Order controller class
 class EnhancedOrderController:
     def __init__(self):
-        # Use absolute path to point to the data file in the project root directory
+        # 使用绝对路径指向项目根目录中的数据文件
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.ORDER_FILE = os.path.join(root_dir, "OrderDB.json")
 
-        # Make sure directory exists
+        # 确保目录存在
         if not os.path.exists(os.path.dirname(self.ORDER_FILE)):
             os.makedirs(os.path.dirname(self.ORDER_FILE), exist_ok=True)
 
-    # Load all order data from file
+        # 初始化并运行数据库合并
+        try:
+            # 创建BarModel实例进行数据库合并
+            self.model = BarModel(
+                source_path=os.path.join(root_dir, "Database", "OrderDB.json"),
+                target_path=self.ORDER_FILE
+            )
+            # 自动合并在BarModel初始化时已执行
+        except Exception as e:
+            messagebox.showwarning("数据库合并警告", f"数据库合并过程中发生错误: {str(e)}\n应用程序将继续使用现有数据。")
+
+    # 加载所有订单数据
     def load_orders(self):
         try:
             if os.path.exists(self.ORDER_FILE):
@@ -23,36 +42,36 @@ class EnhancedOrderController:
                 data = json.load(file)
                 file.close()
 
-                # Ensure return value is a list
+                # 确保返回值是列表
                 if isinstance(data, list):
                     return data
                 else:
-                    messagebox.showerror("Data Error", "Order data format incorrect, initializing new data")
+                    messagebox.showerror("数据错误", "订单数据格式不正确，初始化新数据")
                     return []
             return []
         except Exception as e:
-            messagebox.showerror("Data Error", f"Failed to read order file: {str(e)}")
+            messagebox.showerror("数据错误", f"读取订单文件失败: {str(e)}")
             return []
 
-    # Get order by transaction ID
+    # 根据交易ID获取订单
     def get_order_by_transaction(self, transaction_id):
         orders = self.load_orders()
         transaction_id_str = str(transaction_id)
 
-        # Search for matching transaction
+        # 搜索匹配的交易
         for order in orders:
             if str(order.get("transaction_id", "")) == transaction_id_str:
                 return order
         return None
 
-    # Save order data to file
+    # 将订单数据保存到文件
     def save_order(self, order_data):
         orders = self.load_orders()
 
-        # Ensure ID is in string format
+        # 确保ID是字符串格式
         order_data["transaction_id"] = str(order_data["transaction_id"])
 
-        # Search for existing order with the same ID
+        # 搜索具有相同ID的现有订单
         existing_index = -1
         for i in range(len(orders)):
             order = orders[i]
@@ -61,57 +80,57 @@ class EnhancedOrderController:
                     existing_index = i
                     break
 
-        # Update or add order
+        # 更新或添加订单
         if existing_index != -1:
             orders[existing_index] = order_data
         else:
             orders.append(order_data)
 
-        # Save to file
+        # 保存到文件
         try:
             file = open(self.ORDER_FILE, "w", encoding="utf-8")
             json.dump(orders, file, indent=4, ensure_ascii=False)
             file.close()
         except Exception as e:
-            messagebox.showerror("Save Error", f"Failed to save order data: {str(e)}")
+            messagebox.showerror("保存错误", f"保存订单数据失败: {str(e)}")
 
-    # Apply discount to items
+    # 应用折扣到商品
     def apply_discount(self, order, discount_rate, product_ids=None):
         for item in order["breakdown"]:
-            # Check if this item should have discount applied
+            # 检查此商品是否应该应用折扣
             if product_ids is None or str(item["product_id"]) in product_ids:
-                # Save original price
+                # 保存原始价格
                 if "original_price" not in item:
                     item["original_price"] = item["price"]
 
-                # Calculate discount
+                # 计算折扣
                 original_price = item["original_price"]
                 new_price = round(original_price * (1 - discount_rate), 2)
                 discount_amount = round(original_price - new_price, 2)
                 discount_percentage = round(discount_rate * 100, 1)
 
-                # Update item information
+                # 更新商品信息
                 item["price"] = new_price
                 item["discount_percentage"] = discount_percentage
                 item["discount_amount"] = discount_amount
         return order
 
-    # Process partial checkout for selected items
+    # 处理部分结账
     def partial_checkout(self, order, selected_ids):
         total_paid = 0
-        # Process selected items
+        # 处理选中的商品
         for item in order["breakdown"]:
             if str(item["product_id"]) in selected_ids and not item.get("is_paid", False):
                 item["is_paid"] = True
                 total_paid += item["price"] * item["amount"]
         return order, total_paid
 
-    # Get active orders (not fully paid)
+    # 获取活跃订单（未完全付款）
     def get_active_orders(self):
         orders = self.load_orders()
         active_orders = []
 
-        # Filter for orders that are not fully paid
+        # 筛选未完全付款的订单
         for o in orders:
             if isinstance(o, dict) and "breakdown" in o:
                 all_paid = True
@@ -124,12 +143,12 @@ class EnhancedOrderController:
 
         return active_orders
 
-    # Get history orders (fully paid)
+    # 获取历史订单（已完全付款）
     def get_history_orders(self):
         orders = self.load_orders()
         history_orders = []
 
-        # Filter for orders that are fully paid
+        # 筛选已完全付款的订单
         for o in orders:
             if isinstance(o, dict) and "breakdown" in o:
                 all_paid = True
@@ -143,11 +162,11 @@ class EnhancedOrderController:
         return history_orders
 
 
-# Initialize test data
+# 初始化测试数据
 def initialize_test_data():
     controller = EnhancedOrderController()
 
-    # Basic test orders
+    # 基本测试订单
     test_orders = [
         {
             "transaction_id": "1001",
@@ -171,7 +190,7 @@ def initialize_test_data():
         }
     ]
 
-    # Add detailed test data
+    # 添加详细测试数据
     wine_sample = {
         "transaction_id": "1003",
         "table_id": "C5",
@@ -189,16 +208,16 @@ def initialize_test_data():
 
     test_orders.append(wine_sample)
 
-    # Save test data
+    # 保存测试数据
     for order in test_orders:
         controller.save_order(order)
-    print("Test data initialized")
+    print("测试数据初始化完成")
 
 
-# If running this file directly, only initialize test data
+# 如果直接运行此文件，只初始化测试数据
 if __name__ == "__main__":
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     db_path = os.path.join(root_dir, "OrderDB.json")
     if not os.path.exists(db_path):
         initialize_test_data()
-        print("Test data initialization complete, please run the main program to start the application.")
+        print("测试数据初始化完成，请运行主程序启动应用程序。")
