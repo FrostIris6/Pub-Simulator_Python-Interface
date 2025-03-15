@@ -3,7 +3,7 @@
         "id": 300,
         "name": "Cabernet Sauvignon",
         "price": "60 SEK",
-        "stock": 55,
+        "stock": 56,
         "description": {
             "en": "2002, Marseilles, Red Wine, red grapes, glass",
             "sv": "2002, Marseille, R\u00f6tt vin, r\u00f6da druvor, glas",
@@ -17,7 +17,7 @@
         "id": 301,
         "name": "Merlot",
         "price": "65 SEK",
-        "stock": 50,
+        "stock": 51,
         "description": {
             "en": "2018, Bordeaux, Red Wine, black cherry, glass",
             "sv": "2018, Bordeaux, R\u00f6tt vin, svarta k\u00f6rsb\u00e4r, glas",
@@ -101,7 +101,7 @@
         "id": 307,
         "name": "Heineken",
         "price": "22 SEK",
-        "stock": 70,
+        "stock": 0,
         "description": {
             "en": "Heineken Brewery, Netherlands, lager, 5%, bottle",
             "sv": "Heineken Bryggeri, Nederl\u00e4nderna, lager, 5%, flaska",

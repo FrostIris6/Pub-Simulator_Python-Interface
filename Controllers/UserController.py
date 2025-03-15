@@ -5,6 +5,17 @@ class UserController:
     def __init__(self, user_model):
         self.user_model = user_model
         self.current_user = None  # Stores the currently logged-in user
+        self.menu_view = None  # Add this to store reference to MenuView
+        
+    def set_menu_view(self, menu_view):
+        """Links UserController to MenuView"""
+        self.menu_view = menu_view
+        
+    def get_current_user_role(self):
+        if self.current_user is not None:
+            return self.current_user.type_of_user
+        else:
+            return 'none'
 
     def login(self, identifier, password):
         """Handles user login"""
@@ -14,7 +25,10 @@ class UserController:
             self.current_user = result["use_list"]
             self.user_id = result["use_list"].id
             self.type_of_user = result["use_list"].type_of_user
+            if hasattr(self, "menu_view"):  # Ensure menu_view exists
+                self.menu_view.update_categories()
             return {"status": "success", "user_id": self.user_id, "type_of_user": self.type_of_user}  # return flag and type of user
+            # Notify MenuView to update buttons
         elif result["status"] == "wrong_password":
             self.attempts = result["attempts"]
             return {"status": "wrong_password","attempts":self.attempts}  # Example: "wrong_password:3"
@@ -40,3 +54,5 @@ class UserController:
         if self.current_user:
             messagebox.showinfo("Logged Out", "You have been logged out successfully.")
             self.current_user = None
+        if self.menu_view:
+                self.menu_view.update_categories()  # Update menu when user logs out

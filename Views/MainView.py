@@ -16,16 +16,6 @@ class MainView:
         self.create_layout()
 
     def create_layout(self):
-        # """Create the basic layout of the interface."""
-        # # Left sidebar for functional buttons
-        # self.sidebar = Frame(self.root, bg="#333", width=200, height=800)
-        # self.sidebar.pack(side="left", fill="y")
-
-        # # Buttons
-        # buttons = ["Wine", "Beer", "Cocktail", "Food", "Fridge"]
-        # for text in buttons:
-        #     btn = Button(self.sidebar, text=text, bg="#555", fg="white", font=("Arial", 14), width=15)
-        #     btn.pack(pady=10, padx=10)
 
         # Right-side user information & menu display area
         self.main_content = Frame(self.root, bg="white", width=1440, height=800)
@@ -49,11 +39,13 @@ class MainView:
         self.order_area = Frame(self.bottom_aera, bg="white")
         self.order_area.pack(side="left", fill="both", expand=True)
         
-        self.menu_frame = MenuView(self.menu_area, self.menu_controller)
+        self.menu_frame = MenuView(self.menu_area, self.menu_controller, self.user_controller)
         self.menu_frame.pack(fill="both", expand=True)
         # menu and order can't show complete view both, I think reason is from their own codes, not outer frame or pack
         # put order frame here
         self.order_frame = OrderViewClass(self.order_area, None)
+        
+        self.user_controller.set_menu_view(self.menu_frame)
 
     def set_user_view(self, view):
         """Set and display the user view."""
@@ -68,4 +60,6 @@ class MainView:
         for widget in self.menu_area.winfo_children():
             widget.destroy()  # Clear old widgets
         view.pack(fill="both", expand=True)
+        
+    
 
