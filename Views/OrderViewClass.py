@@ -62,7 +62,9 @@ class OrderViewClass:
 
     def init_title_order(self):
         # 订单标题
-        tk.Label(self.order_title, text="Order Details", font=("Arial", 16), bg="white").pack(pady=10)
+        title=(tk.Label(self.order_title, text="Order Details", font=("Arial", 16), bg="white"))
+        title.pack(pady=10)
+
 
     def checkout_window(self):
         # 创建 Toplevel 窗口
@@ -112,17 +114,17 @@ class OrderViewClass:
             label = tk.Label(self.order_panel, text=item["amount"], width=5, height=1, bg="white")
             label.grid(row=i + 1, column=2, sticky="w", padx=5, pady=2)
 
-            # 创建 specification 下拉框
-            options = ["can", "bottle"]
-            combobox = ttk.Combobox(self.order_panel, values=options, width=10, height=1)
-            index = options.index(item["specification"])
-            combobox.current(index)  # 设置默认选中项
-            combobox.grid(row=i + 1, column=3, sticky="w", padx=5, pady=2)
-            combobox.bind("<<ComboboxSelected>>", lambda event, item=item, combobox=combobox: self.controller.pick_spe(item["product_id"], combobox.get()))
+            # # 创建 specification 下拉框
+            # options = ["can", "bottle"]
+            # combobox = ttk.Combobox(self.order_panel, values=options, width=10, height=1)
+            # index = options.index(item["specification"])
+            # combobox.current(index)  # 设置默认选中项
+            # combobox.grid(row=i + 1, column=3, sticky="w", padx=5, pady=2)
+            # combobox.bind("<<ComboboxSelected>>", lambda event, item=item, combobox=combobox: self.controller.pick_spe(item["product_id"], combobox.get()))
 
             # 创建 notes 按钮
             label = tk.Button(self.order_panel, text="notes", width=5, height=1, bg="lightblue",
-                              command=lambda item=item: self.notes_dialog(item["product_id"], item["note"]))
+                              command=lambda item=item: self.notes_dialog(item["product_id"], item["notes"]))
             label.grid(row=i + 1, column=4, sticky="w", padx=5, pady=2)
 
             # 创建 - 按钮
@@ -145,4 +147,8 @@ class OrderViewClass:
         # 重要！临时措施，后面这里接入 table，点击 table 确定落座后，创建订单实例
         from Controllers.OrderController import OrderController
         self.controller = OrderController(self, 1, 1)
+        messagebox.showinfo("Notice!", "You have confirm table successfully")
         self.update_items()
+
+    def add_item_from_menu(self,product_index):
+        self.controller.add_item(product_index)

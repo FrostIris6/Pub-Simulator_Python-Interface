@@ -14,12 +14,13 @@ class OrderModel:
 
         self.user_id = user_id
         self.table_id = table_id
-        self.items = [{"product_id": "Burger", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "beef", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
+        #self.items = [{"product_id": "Burger", "price": 15, "amount": 2, "specification": "can", "note": "cold"},{"product_id": "beef", "price": 25, "amount": 12, "specification": "can", "note": "cold"}] #all items that have ordered
+        self.items= []
         self.order_info = {} # order_info for this order without detailed items info
         self.transaction_id = str(uuid.uuid4())
 
 
-    def add_item(self, product_id, price, amount=1, specification=None, notes=None):
+    def add_item(self, product_id, price, amount=1, specification="", notes=""):
         # add new items
         item = dict(product_id=product_id, price=price, amount=amount, specification=specification, notes=notes)
         self.items.append(item)
@@ -55,7 +56,7 @@ class OrderModel:
     def add_notes(self, product_id, notes):
         for item in self.items:
             if item["product_id"] == product_id:
-                item["note"] = notes
+                item["notes"] = notes
 
     def pick_spe(self, product_id, spe):
         for item in self.items:

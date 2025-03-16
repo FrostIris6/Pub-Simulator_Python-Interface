@@ -9,7 +9,8 @@ from Models.Order_Payment_Model import OrderModel, PaymentModel
 from Views.OrderViewClass import OrderViewClass
 import tkinter as tk
 from tkinter import messagebox
-
+import os
+import json
 
 class OrderController:
 
@@ -22,8 +23,16 @@ class OrderController:
         self.payment = PaymentModel(self.order)
 
 
-    def add_item(self, item_id, price, amount=1, specification=None, notes=None): #get new item from menu
-        self.order.add_item(item_id, price, amount, specification, notes)
+    def add_item(self, product_index): #get new item from menu
+
+        with open("Database/MenuDB.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+            for item in data:
+                if item["name"] == product_index:
+                    item_id = product_index
+                    price = int(item["price"].split()[0])
+                    break
+        self.order.add_item(item_id, price)
         self.view.update_items()
 
     def minus1_item(self, item_id):
