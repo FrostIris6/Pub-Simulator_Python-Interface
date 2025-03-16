@@ -1,0 +1,294 @@
+{
+  "general": {
+    "app_title": "Barhanteringssystem",
+    "welcome": "Välkommen till BAREN !!",
+    "back": "← Tillbaka",
+    "success": "Framgång",
+    "error": "Fel",
+    "warning": "Varning",
+    "info": "Information",
+    "confirm": "Bekräfta",
+    "language": "Språk"
+  },
+  "user_interface": {
+    "login": "Logga in",
+    "register": "Registrera",
+    "logout": "Logga ut",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "submit": "Skicka",
+    "cancel": "Avbryt",
+    "back_button": "⬅ Tillbaka",
+    "next_button": "Nästa ➡",
+    "add": "Lägg till",
+    "delete": "Ta bort",
+    "confirm": "Bekräfta",
+    "table": "Bord",
+    "regular_customer": "Vanlig kund",
+    "vip_user": "VIP-användare",
+    "registered_user": "Registrerad användare",
+    "id": "ID",
+    "name": "Namn",
+    "balance": "Balans",
+    "customer_role": "kund",
+    "bartender_role": "bartender"
+  },
+  "dialogs": {
+    "success": "Framgång",
+    "error": "Fel",
+    "warning": "Varning!",
+    "notice": "Meddelande!",
+    "info": "Information",
+    "confirm": "Bekräfta",
+    "update": "Uppdatera",
+    "invalid_input": "Ogiltig inmatning",
+    "empty_value": "Ange ett värde",
+    "email_phone_info": "Om du inte vill använda e-post eller telefoninformation kan du hålla den tom och systemet kommer att använda användar-ID istället.",
+    "please_confirm_table": "Bekräfta bordet först",
+    "please_enter_valid_stock": "Ange ett giltigt lagernummer.",
+    "product_not_found": "Produkt hittades inte.",
+    "no_product_selected": "Ingen produkt vald.",
+    "stock_update_error": "Misslyckades med att uppdatera lagret.",
+    "stock_update_success": "Lager för {product_name} uppdaterat till {new_stock}.",
+    "product_removed_success": "'{product_name}' har tillfälligt tagits bort.",
+    "confirm_removal": "Bekräfta borttagning",
+    "removal_question": "Är du säker på att du vill tillfälligt ta bort '{product_name}'?",
+    "table_status_update": "Bord {table_id} status uppdaterad till {new_status}.",
+    "language_changed": "Språket har ändrats till {lang_name}",
+    "language_changed_notice": "Gränssnittsspråket har ändrats till {lang_name}.\nVissa ändringar kommer att tillämpas efter att vyer öppnas igen.",
+    "restart_required": "För att helt tillämpa det nya språket behöver applikationen startas om. Vill du starta om nu?"
+  },
+  "login_view": {
+    "enter_identifier": "Ange användarnamn, e-post eller telefon:",
+    "enter_password": "Ange lösenord:",
+    "success_title": "Inloggning lyckades!",
+    "welcome_message": "Välkommen!",
+    "failure_title": "Inloggning misslyckades!",
+    "wrong_password_message": "Felaktigt lösenord! Du kan försöka {attempts} gånger till.",
+    "locked_title": "Konto låst",
+    "locked_message": "Ditt konto har låsts på grund av för många misslyckade försök. Kontakta bartender!",
+    "user_not_found": "Användaren hittades inte."
+  },
+  "register_view": {
+    "enter_username": "Ange användarnamn:",
+    "enter_password": "Ange lösenord:",
+    "enter_user_type": "Ange användartyp (kund/bartender):",
+    "enter_contact": "Ange e-post eller telefon:",
+    "success_title": "Registrering lyckades!",
+    "success_message": "Välkommen! Ditt ID är {user_id}",
+    "failure_title": "Registrering misslyckades",
+    "invalid_method_title": "Ogiltig metod!",
+    "invalid_method_message": "Håll den tom och systemet använder användar-ID istället."
+  },
+  "table_choice": {
+    "title": "Bordval",
+    "prompt": "Vilket bord sitter du vid?"
+  },
+  "views": {
+    "menu": {
+      "products": "Produkter",
+      "update_stock": "Uppdatera lager",
+      "product_name": "Produktnamn:",
+      "new_stock_quantity": "Ny lagermängd:",
+      "update_stock_button": "Uppdatera lager",
+      "product_price": "Produktpris:",
+      "product_photo": "Produktfoto:",
+      "description": "Beskrivning:",
+      "temporarily_remove": "Ta bort tillfälligt"
+    },
+    "order": {
+      "order_details": "Beställningsdetaljer",
+      "sum": "Summa:",
+      "place_order": "Lägg beställning",
+      "table_confirmation": "Bordbekräftelse",
+      "check_out": "Betala",
+      "pay_now": "Betala nu",
+      "notes": "anteckningar",
+      "current_notes": "Nuvarande anteckningar:",
+      "notes_added": "Anteckningar har lagts till",
+      "table_confirm_success": "Du har bekräftat bordet",
+      "order_success": "Du har lagt beställningen",
+      "order_amount": "Ditt beställningsbelopp är"
+    },
+    "bartender": {
+      "table_status": {
+        "free": "Ledigt",
+        "vip": "VIP",
+        "occupied": "Upptaget",
+        "bar": "BAR"
+      },
+      "table_details": "Bord {table_id} detaljer",
+      "table_status_text": "Bord {table_id} Status: {status}",
+      "update_status": "Uppdatera status",
+      "table_text": "Bord"
+    },
+    "order_management": {
+      "current_orders": "Aktuella beställningar",
+      "order_history": "Beställningshistorik",
+      "table": "Bord: {table_id}",
+      "time": "Tid: {transaction_time}",
+      "status_text": "Status: ",
+      "status": {
+        "completed": "Slutförd",
+        "in_progress": "Pågående"
+      },
+      "total": "Totalt: ¥{total}",
+      "to_pay": "Att betala: ¥{total}",
+      "refresh": "Uppdatera",
+      "history": "Historik",
+      "no_active_orders": "Inga aktiva beställningar",
+      "no_history_orders": "Ingen beställningshistorik",
+      "order_details": "Bord {table_id}",
+      "apply_discount": "Tillämpa rabatt:",
+      "rate": "Sats (%)",
+      "apply_discount_button": "Tillämpa rabatt",
+      "clear_selection": "Rensa val",
+      "partial_checkout": "Delbetalning",
+      "checkout": "Betala",
+      "pay_now": "Betala nu",
+      "discount_info": "Rabatt {percentage}%",
+      "discount_abbr": "Rab. {percentage}%",
+      "dialogs": {
+        "select_items_title": "Välj artiklar att betala",
+        "select_items_instruction": "Välj artiklar att betala:",
+        "add_item_title": "Lägg till ny artikel",
+        "add_item_header": "Lägg till ny artikel",
+        "delete_items_title": "Välj artiklar att ta bort",
+        "select_items_to_delete": "Välj obetalda artiklar att ta bort:"
+      },
+      "fields": {
+        "product_id": "Produkt-ID:",
+        "specification": "Specifikation:",
+        "price": "Pris:",
+        "quantity": "Kvantitet:"
+      },
+      "errors": {
+        "invalid_discount_rate": "Ange en giltig rabattsats mellan 0-100",
+        "invalid_input": "Ange giltiga värden"
+      },
+      "warnings": {
+        "select_items_for_discount": "Välj minst en artikel för att tillämpa rabatt",
+        "select_at_least_one": "Välj minst en artikel",
+        "select_items_to_delete": "Välj artiklar att ta bort"
+      },
+      "success": {
+        "discount_applied": "Rabatt på {rate}% tillämpad på {count} artiklar",
+        "checkout_completed": "Betalning slutförd på ¥{total:.2f}",
+        "item_added": "Artikel tillagd",
+        "items_deleted": "Valda artiklar borttagna",
+        "payment_status_reset": "All betalningsstatus har återställts"
+      },
+      "confirm": {
+        "reset_payment_status": "Är du säker på att du vill återställa alla artiklars betalningsstatus?",
+        "delete_items": "Är du säker på att du vill ta bort {count} valda artiklar?"
+      },
+      "info": {
+        "all_items_paid": "Alla artiklar är redan betalda",
+        "no_unpaid_items": "Det finns inga obetalda artiklar att ta bort. Betalda artiklar kan inte tas bort.",
+        "paid_items_not_shown": "Obs: {count} betalda artiklar visas inte eftersom de inte kan tas bort."
+      },
+      "categories": {
+        "drinks": "Drycker",
+        "wine_spirits": "Vin & Sprit",
+        "beer": "Öl",
+        "cocktails": "Cocktails",
+        "food": "Mat",
+        "paid_items": "Betalda artiklar"
+      }
+    }
+  },
+  "categories": {
+    "wine": "Vin",
+    "beer": "Öl",
+    "cocktail": "Cocktail",
+    "food": "Mat",
+    "fridge": "Kylskåp"
+  },
+  "product_categories": {
+    "default": "Drycker",
+    "wine_spirits": "Vin & Sprit",
+    "beer": "Öl",
+    "cocktails": "Cocktails",
+    "food": "Mat",
+    "paid_items": "Betalda artiklar",
+    "酒水": "Alkohol",
+    "啤酒": "Öl",
+    "鸡尾酒": "Cocktail",
+    "食品": "Mat",
+    "玻璃杯": "Glas",
+    "瓶装": "Flaska",
+    "威士忌": "Whiskey"
+  },
+  "products": {
+    "info": {
+      "price": "Pris",
+      "stock": "Lager",
+      "description": "Beskrivning",
+      "vip_status": {
+        "yes": "VIP",
+        "no": "Vanlig"
+      },
+      "glass": "glas",
+      "bottle": "flaska",
+      "tap": "fat",
+      "ml": "ml",
+      "kcal": "kcal",
+      "out_of_stock": "Slut i lager",
+      "low_stock": "Lågt lager"
+    },
+    "names": {
+      "300": "Cabernet Sauvignon",
+      "301": "Merlot",
+      "302": "Provence Rosé",
+      "303": "Chardonnay",
+      "304": "Moët & Chandon Imperial",
+      "305": "Ey Bro",
+      "306": "Guinness Draught",
+      "307": "Heineken",
+      "308": "Punk IPA",
+      "309": "Chimay Blue",
+      "310": "Aperol Spritz",
+      "311": "Margarita",
+      "312": "Mojito",
+      "313": "Old Fashioned",
+      "314": "Espresso Martini",
+      "315": "Tacos",
+      "316": "Ostburgare",
+      "317": "Margherita Pizza",
+      "318": "Filet Mignon",
+      "319": "Hummersoppa",
+      "320": "Pepsi",
+      "321": "Coca-Cola",
+      "322": "Red Bull",
+      "323": "San Pellegrino",
+      "324": "Vitamin Well Reload"
+    },
+    "descriptions": {
+      "300": "2002, Marseilles, Rött vin, röda druvor, glas",
+      "301": "2018, Bordeaux, Rött vin, svart körsbär, glas",
+      "302": "2021, Provence, Rosévin, jordgubb, glas",
+      "303": "2019, Bourgogne, Vitt vin, äpple, glas",
+      "304": "2000, Frankrike, Mousserande vin, citrus, flaska",
+      "305": "Svensk producent, Sverige, ljus öl, 4%, fat",
+      "306": "Guinness Brewery, Irland, stout, 4,2%, fat",
+      "307": "Heineken Brewery, Nederländerna, lager, 5%, flaska",
+      "308": "BrewDog, Skottland, IPA, 5,6%, fat",
+      "309": "Chimay Brewery, Belgien, Trappistöl, 9%, flaska",
+      "310": "25%, (aperol, bubbelvatten, Prosecco), 300ml",
+      "311": "30%, (tequila, limejuice, triple sec), 250ml",
+      "312": "20%, (vit rom, mynta, lime, socker, sodavatten), 350ml",
+      "313": "32%, (bourbon, bitters, socker, apelsinskal), 200ml",
+      "314": "28%, (vodka, kaffelikör, espresso, sockersirap), 250ml",
+      "315": "Tortilla, nötkött, lök, gräddfil, salt, peppar, ost, jalapeño",
+      "316": "Nötfärsbiff, cheddarost, sallad, tomat, lök, pickles, briochebröd",
+      "317": "Tomatsås, mozzarella, färsk basilika, olivolja, pizzadeg",
+      "318": "Oxfilé, vitlökssmör, rosmarin, salt, peppar, potatismos",
+      "319": "Hummerkött, grädde, vitt vin, vitlök, schalottenlök, paprika",
+      "320": "Uppfriskande läsk, 100 kcal",
+      "321": "Klassisk colasmak, 110 kcal",
+      "322": "Energidryck med taurin och koffein, 80 kcal",
+      "323": "Kolsyrat mineralvatten, 0 kcal",
+      "324": "Vitaminvatten med magnesium och B12, citron-lime smak, 20 kcal"
+    }
+  }
+}

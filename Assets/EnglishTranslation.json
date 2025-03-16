@@ -1,0 +1,296 @@
+{
+  "general": {
+  "app_title": "Bar Management System",
+  "welcome": "Welcome to the BAR !!",
+  "back": "← Back",
+  "success": "Success",
+  "error": "Error",
+  "warning": "Warning",
+  "info": "Information",
+  "confirm": "Confirm",
+  "language": "Language"
+  },
+  "user_interface": {
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "username": "Username",
+  "password": "Password",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "back_button": "⬅ Back",
+  "next_button": "Next ➡",
+  "add": "Add",
+  "delete": "Delete",
+  "confirm": "Confirm",
+  "table": "Table",
+  "regular_customer": "Regular Customer",
+  "vip_user": "VIP User",
+  "registered_user": "Registered User",
+  "id": "ID",
+  "name": "Name",
+  "balance": "Balance",
+  "customer_role": "customer",
+  "bartender_role": "bartender"
+  },
+  "dialogs": {
+  "success": "Success",
+  "error": "Error",
+  "warning": "Warning!",
+  "notice": "Notice!",
+  "info": "Information",
+  "confirm": "Confirm",
+  "update": "Update",
+  "invalid_input": "Invalid Input",
+  "empty_value": "Please enter a value",
+  "email_phone_info": "If you don't want to use email or phone information, you can keep it empty and system will use user id instead.",
+  "please_confirm_table": "Please confirm table first",
+  "please_enter_valid_stock": "Please enter a valid stock number.",
+  "product_not_found": "Product not found.",
+  "no_product_selected": "No product selected.",
+  "stock_update_error": "Failed to update stock.",
+  "stock_update_success": "Stock for {product_name} updated to {new_stock}.",
+  "product_removed_success": "'{product_name}' has been temporarily removed.",
+  "confirm_removal": "Confirm Removal",
+  "removal_question": "Are you sure you want to temporarily remove '{product_name}'?",
+  "table_status_update": "Table {table_id} status updated to {new_status}.",
+  "language_changed": "Language changed to {lang_name}",
+  "language_changed_notice": "Interface language has been changed to {lang_name}.\nSome changes will apply after reopening views.",
+  "restart_required": "To fully apply the new language, the application needs to restart. Would you like to restart now?"
+  },
+  "login_view": {
+  "enter_identifier": "Enter username, email, or phone:",
+  "enter_password": "Enter password:",
+  "success_title": "Login Successful!",
+  "welcome_message": "Welcome!",
+  "failure_title": "Login Failed!",
+  "wrong_password_message": "Password Incorrect! You can try {attempts} more times.",
+  "locked_title": "Account Locked",
+  "locked_message": "Your account has been locked due to too many failed attempts. Please contact the bartender!",
+  "user_not_found": "User not found."
+  },
+  "register_view": {
+  "enter_username": "Enter username:",
+  "enter_password": "Enter password:",
+  "enter_user_type": "Enter user type (customer/bartender):",
+  "enter_contact": "Enter email or phone:",
+  "success_title": "Registration Success!",
+  "success_message": "Welcome! Your ID is {user_id}",
+  "failure_title": "Registration Failed",
+  "invalid_method_title": "Method Invalid!",
+  "invalid_method_message": "Keep it empty and system will use user id instead."
+  },
+  "table_choice": {
+  "title": "Table Choice",
+  "prompt": "Which table are you sitting at?"
+  },
+  "views": {
+    "menu": {
+      "products": "Products",
+      "update_stock": "Update Stock",
+      "product_name": "Product Name:",
+      "new_stock_quantity": "New Stock Quantity:",
+      "update_stock_button": "Update Stock",
+      "product_price": "Product Price:",
+      "product_photo": "Product Photo:",
+      "description": "Description:",
+      "temporarily_remove": "Temporarily Remove"
+    },
+    "order": {
+      "order_details": "Order Details",
+      "sum": "Sum:",
+      "place_order": "Place the order",
+      "table_confirmation": "Table Confirmation",
+      "check_out": "Check Out",
+      "pay_now": "Pay Now",
+      "notes": "notes",
+      "current_notes": "Current notes:",
+      "notes_added": "Notes added",
+      "table_confirm_success": "You have confirm table successfully",
+      "order_success": "You have placed the order successfully",
+      "order_amount": "You order amount is"
+    },
+    "bartender": {
+      "table_status": {
+        "free": "Free",
+        "vip": "VIP",
+        "occupied": "Occupied",
+        "bar": "BAR"
+      },
+      "table_details": "Table {table_id} Details",
+      "table_status_text": "Table {table_id} Status: {status}",
+      "update_status": "Update Status",
+      "table_text": "Table"
+    },
+    "order_management": {
+      "current_orders": "Current Orders",
+      "order_history": "Order History",
+      "table": "Table: {table_id}",
+      "time": "Time: {transaction_time}",
+      "status_text": "Status: ",
+      "status": {
+        "completed": "Completed",
+        "in_progress": "In Progress"
+      },
+      "total": "Total: ¥{total}",
+      "to_pay": "To Pay: ¥{total}",
+      "refresh": "Refresh",
+      "history": "History",
+      "no_active_orders": "No active orders",
+      "no_history_orders": "No history orders",
+      "order_details": "Table {table_id}",
+      "apply_discount": "Apply Discount:",
+      "rate": "Rate (%)",
+      "apply_discount_button": "Apply Discount",
+      "clear_selection": "Clear Selection",
+      "partial_checkout": "Partial Checkout",
+      "checkout": "Checkout",
+      "pay_now": "Pay Now",
+      "discount_info": "Discount {percentage}%",
+      "discount_abbr": "Disc. {percentage}%",
+      "dialogs": {
+        "select_items_title": "Select Items to Checkout",
+        "select_items_instruction": "Select items to checkout:",
+        "add_item_title": "Add New Item",
+        "add_item_header": "Add New Item",
+        "delete_items_title": "Select Items to Delete",
+        "select_items_to_delete": "Select unpaid items to delete:"
+      },
+      "fields": {
+        "product_id": "Product ID:",
+        "specification": "Specification:",
+        "price": "Price:",
+        "quantity": "Quantity:"
+      },
+      "errors": {
+        "invalid_discount_rate": "Please enter a valid discount rate between 0-100",
+        "invalid_input": "Please enter valid values"
+      },
+      "warnings": {
+        "select_items_for_discount": "Please select at least one item to apply discount",
+        "select_at_least_one": "Please select at least one item",
+        "select_items_to_delete": "Please select items to delete"
+      },
+      "success": {
+        "discount_applied": "Discount of {rate}% applied to {count} items",
+        "checkout_completed": "Successfully checked out ¥{total:.2f}",
+        "item_added": "Item added",
+        "items_deleted": "Selected items deleted",
+        "payment_status_reset": "All payment status has been reset"
+      },
+      "confirm": {
+        "reset_payment_status": "Are you sure you want to reset all item payment status?",
+        "delete_items": "Are you sure you want to delete {count} selected items?"
+      },
+      "info": {
+        "all_items_paid": "All items are already paid",
+        "no_unpaid_items": "There are no unpaid items to delete. Paid items cannot be deleted.",
+        "paid_items_not_shown": "Note: {count} paid items are not shown as they cannot be deleted."
+      },
+      "categories": {
+        "drinks": "Drinks",
+        "wine_spirits": "Wine & Spirits",
+        "beer": "Beer",
+        "cocktails": "Cocktails",
+        "food": "Food",
+        "paid_items": "Paid Items"
+      }
+    }
+  },
+  "categories": {
+  "wine": "Wine",
+  "beer": "Beer",
+  "cocktail": "Cocktail",
+  "food": "Food",
+  "fridge": "Fridge"
+},
+"product_categories": {
+  "default": "Drinks",
+  "wine_spirits": "Wine & Spirits",
+  "beer": "Beer",
+  "cocktails": "Cocktails",
+  "food": "Food",
+  "paid_items": "Paid Items",
+  "酒水": "Wine & Spirits",
+  "啤酒": "Beer",
+  "鸡尾酒": "Cocktail",
+  "食品": "Food",
+  "玻璃杯": "Glass",
+  "瓶装": "Bottle",
+  "威士忌": "Whiskey"
+  },
+  "products": {
+  "info": {
+    "price": "Price",
+    "stock": "Stock",
+    "description": "Description",
+    "vip_status": {
+      "yes": "VIP",
+      "no": "Regular"
+    },
+    "glass": "glass",
+    "bottle": "bottle",
+    "tap": "tap",
+    "ml": "ml",
+    "kcal": "kcal",
+    "out_of_stock": "Out of Stock",
+    "low_stock": "Low Stock"
+  }
+  },
+  "products": {
+    "names": {
+      "300": "Cabernet Sauvignon",
+      "301": "Merlot",
+      "302": "Provence Rosé",
+      "303": "Chardonnay",
+      "304": "Moët & Chandon Imperial",
+      "305": "Ey Bro",
+      "306": "Guinness Draught",
+      "307": "Heineken",
+      "308": "Punk IPA",
+      "309": "Chimay Blue",
+      "310": "Aperol Spritz",
+      "311": "Margarita",
+      "312": "Mojito",
+      "313": "Old Fashioned",
+      "314": "Espresso Martini",
+      "315": "Tacos",
+      "316": "Cheeseburger",
+      "317": "Margherita Pizza",
+      "318": "Filet Mignon",
+      "319": "Lobster Bisque",
+      "320": "Pepsi",
+      "321": "Coca-Cola",
+      "322": "Red Bull",
+      "323": "San Pellegrino",
+      "324": "Vitamin Well Reload"
+    },
+    "descriptions": {
+      "300": "2002, Marseilles, Red Wine, red grapes, glass",
+      "301": "2018, Bordeaux, Red Wine, black cherry, glass",
+      "302": "2021, Provence, Rosé Wine, strawberry, glass",
+      "303": "2019, Burgundy, White Wine, apple, glass",
+      "304": "2000, France, Sparkling Wine, citrus, bottle",
+      "305": "Swedish Producer, Sweden, blonde beer, 4%, tap",
+      "306": "Guinness Brewery, Ireland, stout, 4.2%, tap",
+      "307": "Heineken Brewery, Netherlands, lager, 5%, bottle",
+      "308": "BrewDog, Scotland, IPA, 5.6%, tap",
+      "309": "Chimay Brewery, Belgium, Trappist beer, 9%, bottle",
+      "310": "25%, (aperol, sparkly water, Prosecco), 300ml",
+      "311": "30%, (tequila, lime juice, triple sec), 250ml",
+      "312": "20%, (white rum, mint, lime, sugar, soda water), 350ml",
+      "313": "32%, (bourbon, bitters, sugar, orange twist), 200ml",
+      "314": "28%, (vodka, coffee liqueur, espresso, sugar syrup), 250ml",
+      "315": "Tortilla, beef, onions, sour cream, salt, pepper, cheese, jalapeno",
+      "316": "Beef patty, cheddar cheese, lettuce, tomato, onion, pickles, brioche bun",
+      "317": "Tomato sauce, mozzarella, fresh basil, olive oil, pizza dough",
+      "318": "Beef tenderloin, garlic butter, rosemary, salt, pepper, mashed potatoes",
+      "319": "Lobster meat, heavy cream, white wine, garlic, shallots, paprika",
+      "320": "Refreshing soda, 100 kcal",
+      "321": "Classic cola taste, 110 kcal",
+      "322": "Energy drink with taurine and caffeine, 80 kcal",
+      "323": "Sparkling mineral water, 0 kcal",
+      "324": "Vitamin water with magnesium and B12, lemon-lime flavor, 20 kcal"
+    }
+  }
+}
