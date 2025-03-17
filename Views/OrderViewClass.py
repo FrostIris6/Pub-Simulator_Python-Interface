@@ -33,21 +33,26 @@ class OrderViewClass:
             self.update_translations()
 
     def init_confirm_order(self):
-        # 获取"Sum"的翻译 / Get translation for "Sum"
+        """创建确认订单面板和按钮"""
+        # 清除现有内容
+        for widget in self.confirm_panel.winfo_children():
+            widget.destroy()
+
+        # 获取"Sum"的翻译
         sum_text = "Sum: "
         if self.translation_controller:
             sum_text = self.translation_controller.get_text("views.order.sum", default=sum_text)
 
-        # Sum 标签（第一行，居右） / Sum label (first row, align right)
+        # Sum 标签
         self.sum_label = tk.Label(self.confirm_panel, text=sum_text + str(self.total_price), font=("Arial", 16),
                                   bg="white")
         self.sum_label.grid(row=0, column=0, padx=10, pady=5)
 
-        # 创建一个 Frame 用于放置按钮（第二行，居中） / Create a Frame for buttons (second row, centered)
+        # 创建一个 Frame 用于放置按钮
         button_frame = tk.Frame(self.confirm_panel, width=560, bg="lightgray")
         button_frame.grid(row=1, column=0, pady=5)
 
-        # 获取按钮文本的翻译 / Get translations for button texts
+        # 获取按钮文本的翻译
         place_order_text = "Place the order"
         table_confirm_text = "Table Confirmation"
         check_out_text = "Check Out"
@@ -58,15 +63,13 @@ class OrderViewClass:
                                                                       default=table_confirm_text)
             check_out_text = self.translation_controller.get_text("views.order.check_out", default=check_out_text)
 
-        # place the order按钮 / Place the order button
+        # 创建所有按钮
         checkout_button = tk.Button(button_frame, text=place_order_text, command=self.place_order, width=20, height=2)
-        checkout_button.grid(row=0, column=0, padx=10)  # 不知道为什么pack的side没用，grid的sticky也没用，不管怎么设置都是贴着放的
+        checkout_button.grid(row=0, column=0, padx=10)
 
-        # 临时设置桌号按钮 / Temporary table setup button
         temp_button = tk.Button(button_frame, text=table_confirm_text, command=self.temp_button, width=20, height=2)
         temp_button.grid(row=0, column=1, padx=10)
 
-        # check_out button
         self.checkout_button = tk.Button(button_frame, text=check_out_text, command=self.checkout_window, width=20,
                                          height=2)
         self.checkout_button.grid(row=0, column=2, padx=10)
@@ -238,32 +241,12 @@ class OrderViewClass:
         if not self.translation_controller:
             return
 
-        # 更新"Sum"标签
-        sum_text = self.translation_controller.get_text("views.order.sum", default="Sum: ")
-        self.sum_label.config(text=sum_text + str(self.total_price))
+        # 重新创建所有按钮，而不是更新文本
+        self.init_confirm_order()
 
         # 更新订单标题
         order_details_text = self.translation_controller.get_text("views.order.order_details", default="Order Details")
         self.title_label.config(text=order_details_text)
-
-        # 获取按钮文本的翻译
-        place_order_text = self.translation_controller.get_text("views.order.place_order", default="Place the order")
-        table_confirm_text = self.translation_controller.get_text("views.order.table_confirmation",
-                                                                  default="Table Confirmation")
-        check_out_text = self.translation_controller.get_text("views.order.check_out", default="Check Out")
-
-        # 查找并更新 confirm_panel 中的按钮 - 使用更灵活的匹配
-        for widget in self.confirm_panel.winfo_children():
-            if isinstance(widget, tk.Frame):  # 按钮框架
-                for button in widget.winfo_children():
-                    if isinstance(button, tk.Button):
-                        current_text = button.cget("text")
-                        if current_text == "Place the order" or current_text.startswith("Place"):
-                            button.config(text=place_order_text)
-                        elif current_text == "Table Confirmation" or current_text.startswith("Table Con"):
-                            button.config(text=table_confirm_text)
-                        elif current_text == "Check Out" or current_text.startswith("Check"):
-                            button.config(text=check_out_text)
 
         # 刷新订单项
         if hasattr(self.controller, "order") and self.controller.order:
