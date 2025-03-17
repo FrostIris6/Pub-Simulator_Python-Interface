@@ -403,14 +403,102 @@ class AppManager:
         )
         language_btn.pack(side="right", padx=10, pady=2)
 
+    # 将这段代码替换到CombineView.py文件中对应的地方
+
+    # 修复AppManager类中的方法
     def show_language_selector(self):
         """显示语言选择器"""
         if self.translation_controller:
-            create_language_selector(
-                self.root,
-                self.translation_controller,
-                self.update_language
+            # 直接使用内联定义的语言选择器对话框
+            language_window = tk.Toplevel(self.root)
+            language_window.title("Language / 语言 / Språk")
+            language_window.geometry("400x250")  # 显著增加窗口宽度
+            language_window.resizable(True, True)  # 允许调整大小
+            language_window.transient(self.root)
+            language_window.grab_set()
+
+            # 居中窗口
+            language_window.update_idletasks()
+            width = language_window.winfo_width()
+            height = language_window.winfo_height()
+            x = (self.root.winfo_screenwidth() // 2) - (width // 2)
+            y = (self.root.winfo_screenheight() // 2) - (height // 2)
+            language_window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+            # 标题
+            tk.Label(
+                language_window,
+                text="Select Language / 选择语言 / Välj Språk",
+                font=("Arial", 12, "bold")
+            ).pack(pady=15)
+
+            # 获取可用语言
+            languages = self.translation_controller.get_available_languages()
+
+            # 当前选择的语言
+            selected_language = tk.StringVar(value=self.translation_controller.get_current_language())
+
+            # 创建语言选项
+            for code, name in languages.items():
+                rb = ttk.Radiobutton(
+                    language_window,
+                    text=name,
+                    value=code,
+                    variable=selected_language
+                )
+                rb.pack(anchor=tk.W, padx=20, pady=5)
+
+            # 按钮框架
+            button_frame = tk.Frame(language_window)
+            button_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+
+            # 确保按钮框架中的列有合适的权重
+            button_frame.columnconfigure(0, weight=1)
+            button_frame.columnconfigure(1, weight=1)
+
+            # 获取按钮文本
+            apply_text = "Apply"
+            cancel_text = "Cancel"
+            if self.translation_controller:
+                apply_text = self.translation_controller.get_text("dialogs.confirm", default=apply_text)
+                cancel_text = self.translation_controller.get_text("user_interface.cancel", default=cancel_text)
+
+            # 使用grid布局管理器，确保按钮有足够的空间
+            cancel_btn = ttk.Button(
+                button_frame,
+                text=cancel_text,
+                command=language_window.destroy,
+                width=15  # 固定宽度
             )
+            cancel_btn.grid(row=0, column=0, padx=20, pady=5, sticky="ew")
+
+            # 应用按钮回调
+            def apply_language():
+                new_lang_code = selected_language.get()
+                if self.translation_controller.set_language(new_lang_code):
+                    success_text = "Language changed successfully"
+                    if self.translation_controller:
+                        languages = self.translation_controller.get_available_languages()
+                        lang_name = languages.get(new_lang_code, new_lang_code)
+                        success_text = self.translation_controller.get_text(
+                            "dialogs.language_changed",
+                            default=f"Language changed to {lang_name}"
+                        )
+                    messagebox.showinfo("Success", success_text)
+                    language_window.destroy()
+                    self.update_language()
+
+            apply_btn = ttk.Button(
+                button_frame,
+                text=apply_text,
+                command=apply_language,
+                width=15  # 固定宽度
+            )
+            apply_btn.grid(row=0, column=1, padx=20, pady=5, sticky="ew")
+
+            # 设置最小窗口尺寸
+            language_window.update_idletasks()
+            language_window.minsize(400, 250)
 
     def update_all_translations(self):
         """递归更新所有视图的翻译"""
