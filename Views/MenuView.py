@@ -10,6 +10,10 @@ class MenuView(tk.Frame):
         self.user_controller = user_controller
         self.translation_controller = translation_controller  # 存储翻译控制器 / Store translation controller
 
+        # 添加简单的历史记录功能
+        self.stock_history = []  # 用于存储历史记录
+        self.history_position = -1  # 当前位置
+
         self.user_role = self.user_controller.get_current_user_role()
 
         # Left category panel
@@ -113,9 +117,23 @@ class MenuView(tk.Frame):
             update_stock_button_text = self.translation_controller.get_text("views.menu.update_stock_button",
                                                                             default=update_stock_button_text)
 
+        # 创建撤销/重做按钮框架
+        button_frame = tk.Frame(self.scrollable_frame)
+        button_frame.grid(row=5, column=1, columnspan=2, pady=5, sticky="w")
+
+        # 撤销按钮
+        self.undo_button = tk.Button(button_frame, text="Undo", command=self.undo_stock_change,
+                                     state=tk.DISABLED, width=6)
+        self.undo_button.pack(side=tk.LEFT, padx=5)
+
+        # 重做按钮
+        self.redo_button = tk.Button(button_frame, text="Redo", command=self.redo_stock_change,
+                                     state=tk.DISABLED, width=6)
+        self.redo_button.pack(side=tk.LEFT, padx=5)
+
         self.update_stock_button = tk.Button(self.scrollable_frame, text=update_stock_button_text,
                                              command=self.update_stock)
-        self.update_stock_button.grid(row=5, column=1, columnspan=2, pady=10, sticky="w")  # Left-aligned button
+        self.update_stock_button.grid(row=6, column=1, columnspan=2, pady=10, sticky="w")  # Left-aligned button
 
         # 获取"Product Price:"的翻译 / Get translation for "Product Price:"
         product_price_text = "Product Price:"
@@ -124,10 +142,10 @@ class MenuView(tk.Frame):
                                                                       default=product_price_text)
 
         self.stock_price_label = tk.Label(self.scrollable_frame, text=product_price_text)
-        self.stock_price_label.grid(row=6, column=0, padx=5, pady=5, sticky="w")  # Aligned left
+        self.stock_price_label.grid(row=7, column=0, padx=5, pady=5, sticky="w")  # Aligned left
 
         self.stock_price = tk.Label(self.scrollable_frame, text="", font=("Arial", 12, "bold"))
-        self.stock_price.grid(row=6, column=1, padx=5, pady=5, sticky="w")  # Next to label
+        self.stock_price.grid(row=7, column=1, padx=5, pady=5, sticky="w")  # Next to label
 
         self.update_stock_ui()
         self.update_categories()
@@ -139,10 +157,10 @@ class MenuView(tk.Frame):
 
         # Product details
         self.photo_label = tk.Label(self.scrollable_frame, text=photo_text)
-        self.photo_label.grid(row=7, column=0, pady=10)
+        self.photo_label.grid(row=8, column=0, pady=10)
 
         self.photo_display = tk.Label(self.scrollable_frame)
-        self.photo_display.grid(row=8, column=0, pady=10)
+        self.photo_display.grid(row=9, column=0, pady=10)
 
         # 获取"Description:"的翻译 / Get translation for "Description:"
         description_text = "Description:"
@@ -150,11 +168,11 @@ class MenuView(tk.Frame):
             description_text = self.translation_controller.get_text("views.menu.description", default=description_text)
 
         self.description_label = tk.Label(self.scrollable_frame, text=description_text)
-        self.description_label.grid(row=9, column=0, pady=10)
+        self.description_label.grid(row=10, column=0, pady=10)
 
         self.description_text = tk.Label(self.scrollable_frame, text="", wraplength=800,
                                          justify="left")  # Wider description area
-        self.description_text.grid(row=10, column=0, pady=10)
+        self.description_text.grid(row=11, column=0, pady=10)
 
     def display_category(self, category):
         # Reset all category buttons
@@ -290,7 +308,29 @@ class MenuView(tk.Frame):
         product = next((item for item in self.controller.model.menu if item.name == product_name), None)
 
         if product:
+            old_stock = product.stock  # 保存旧库存值
+
+            # 执行操作
             if self.controller.update_item_stock(product.id, new_stock):
+                # 添加到历史记录
+                record = {
+                    "product_id": product.id,
+                    "product_name": product_name,
+                    "old_stock": old_stock,
+                    "new_stock": new_stock
+                }
+
+                # 如果不是在历史记录的末尾，清除之后的历史
+                if self.history_position < len(self.stock_history) - 1:
+                    self.stock_history = self.stock_history[:self.history_position + 1]
+
+                # 添加新记录并更新位置
+                self.stock_history.append(record)
+                self.history_position = len(self.stock_history) - 1
+
+                # 更新按钮状态
+                self.update_history_buttons()
+
                 # 获取成功消息的翻译 / Get translation for success message
                 success_title = "Success"
                 success_pattern = "Stock for {product_name} updated to {new_stock}."
@@ -326,6 +366,78 @@ class MenuView(tk.Frame):
                 error_message = self.translation_controller.get_text("dialogs.product_not_found", default=error_message)
 
             messagebox.showerror(error_title, error_message)
+
+    def undo_stock_change(self):
+        """撤销库存更改"""
+        if self.history_position >= 0:
+            # 获取当前记录
+            record = self.stock_history[self.history_position]
+
+            # 恢复到旧库存值
+            self.controller.update_item_stock(record["product_id"], record["old_stock"])
+
+            # 更新历史位置
+            self.history_position -= 1
+
+            # 更新按钮状态
+            self.update_history_buttons()
+
+            # 如果当前选中的产品是被修改的产品，更新显示的库存值
+            if self.stock_name.cget("text") == record["product_name"]:
+                self.stock_input.delete(0, tk.END)
+                self.stock_input.insert(0, str(record["old_stock"]))
+
+            # 刷新分类显示
+            product = next((item for item in self.controller.model.menu if item.id == record["product_id"]), None)
+            if product:
+                self.display_category(product.category)
+
+            # 显示成功消息
+            messagebox.showinfo("Undo",
+                                f"Reverted {record['product_name']} stock from {record['new_stock']} to {record['old_stock']}")
+
+    def redo_stock_change(self):
+        """重做库存更改"""
+        if self.history_position < len(self.stock_history) - 1:
+            # 移动到下一个历史记录
+            self.history_position += 1
+
+            # 获取记录
+            record = self.stock_history[self.history_position]
+
+            # 应用新库存值
+            self.controller.update_item_stock(record["product_id"], record["new_stock"])
+
+            # 更新按钮状态
+            self.update_history_buttons()
+
+            # 如果当前选中的产品是被修改的产品，更新显示的库存值
+            if self.stock_name.cget("text") == record["product_name"]:
+                self.stock_input.delete(0, tk.END)
+                self.stock_input.insert(0, str(record["new_stock"]))
+
+            # 刷新分类显示
+            product = next((item for item in self.controller.model.menu if item.id == record["product_id"]), None)
+            if product:
+                self.display_category(product.category)
+
+            # 显示成功消息
+            messagebox.showinfo("Redo",
+                                f"Restored {record['product_name']} stock from {record['old_stock']} to {record['new_stock']}")
+
+    def update_history_buttons(self):
+        """更新撤销/重做按钮状态"""
+        # 更新撤销按钮
+        if self.history_position >= 0:
+            self.undo_button.config(state=tk.NORMAL)
+        else:
+            self.undo_button.config(state=tk.DISABLED)
+
+        # 更新重做按钮
+        if self.history_position < len(self.stock_history) - 1:
+            self.redo_button.config(state=tk.NORMAL)
+        else:
+            self.redo_button.config(state=tk.DISABLED)
 
     def update_categories(self):
         self.user_role = self.user_controller.get_current_user_role()
@@ -388,7 +500,28 @@ class MenuView(tk.Frame):
         product = next((item for item in self.controller.model.menu if item.name == product_name), None)
 
         if product:
+            old_stock = product.stock  # 保存旧值用于历史记录
+
             if self.controller.update_item_stock(product.id, 0):
+                # 添加到历史记录
+                record = {
+                    "product_id": product.id,
+                    "product_name": product_name,
+                    "old_stock": old_stock,
+                    "new_stock": 0
+                }
+
+                # 如果不是在历史记录的末尾，清除之后的历史
+                if self.history_position < len(self.stock_history) - 1:
+                    self.stock_history = self.stock_history[:self.history_position + 1]
+
+                # 添加新记录并更新位置
+                self.stock_history.append(record)
+                self.history_position = len(self.stock_history) - 1
+
+                # 更新按钮状态
+                self.update_history_buttons()
+
                 # 获取成功消息的翻译 / Get translation for success message
                 success_title = "Success"
                 success_pattern = "'{product_name}' has been temporarily removed."
@@ -433,6 +566,10 @@ class MenuView(tk.Frame):
             self.stock_input.grid()
             self.update_stock_button.grid()
 
+            # 确保撤销/重做按钮可见
+            if hasattr(self, "undo_button") and hasattr(self, "redo_button"):
+                self.undo_button.master.grid()
+
             # Add Temporarily Remove button next to Update Stock
             if not hasattr(self, "remove_button"):
                 # 获取"Temporarily Remove"按钮的翻译 / Get translation for "Temporarily Remove" button
@@ -443,7 +580,7 @@ class MenuView(tk.Frame):
 
                 self.remove_button = tk.Button(self.scrollable_frame, text=remove_text, command=self.temporarily_remove,
                                                fg="white", bg="red")
-                self.remove_button.grid(row=5, column=0, columnspan=2, pady=10, sticky="w")
+                self.remove_button.grid(row=6, column=0, columnspan=2, pady=10, sticky="w")
             else:
                 self.remove_button.grid()
 
@@ -452,6 +589,10 @@ class MenuView(tk.Frame):
             self.stock_input_label.grid_remove()
             self.stock_input.grid_remove()
             self.update_stock_button.grid_remove()
+
+            # 隐藏撤销/重做按钮
+            if hasattr(self, "undo_button") and hasattr(self, "redo_button"):
+                self.undo_button.master.grid_remove()
 
             if hasattr(self, "remove_button"):
                 self.remove_button.grid_remove()
