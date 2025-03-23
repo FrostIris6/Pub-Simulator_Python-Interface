@@ -1,3 +1,8 @@
+# Control of LoginView and CustomerView
+# Get value from UserModel and compare the password
+# Generate new user information, get user input from View and pass to Model to save this user
+
+
 from tkinter import messagebox
 
 class UserController:
