@@ -1,5 +1,7 @@
 # Pub Simulator - Python Interface
 
+
+
 # Group Time Reporting
 The first meeting is on Feb 12. Read the requirements and get the main points from it.
 The second meeting on Feb 17 go through the prototype and polish
@@ -28,7 +30,6 @@ bar-management-system/
 │   ├── MenuController.py      
 │   ├── OrderController.py     
 │   ├── Order_bar_controller.py
-│   ├── SettingsController.py  # Unused
 │   ├── TableController.py     
 │   ├── TranslationController.py 
 │   └── UserController.py      
@@ -37,11 +38,9 @@ bar-management-system/
 │   ├── CustomerView.py        
 │   ├── LoginView.py           
 │   ├── MainView.py            # For the customer side
-│   ├── MenuView.py            
-│   ├── MenuView.py            # Unused
-│   ├── OrderViewClass.py      
-│   ├── Order_bar_view.py      
-│   └── StockView.py           # Unused
+│   ├── MenuView.py
+│   ├── OrderViewClass.py       
+│   └── Order_bar_view.py
 ├── Assets/                     
 │   ├── ChineseTranslation.json 
 │   ├── EnglishTranslation.json 
@@ -58,6 +57,9 @@ bar-management-system/
 ├── MainProgram.py             # Run this program to start
 └── README.md                   # Description
 
+# Run program
+Please run MainProgram.py to start
+
 # Login account
 Customer: 
 Username "Alice Smith"，Password "password123"
@@ -70,10 +72,21 @@ We used Claude, Deepseek, Chatgpt to help us to fix the error and adjust the int
 # Self Time Reporting
 Mu Tang
 Feb 17-Feb 19 Working on the prototype with Figma
-Feb 24-Feb26 Coding on the bartender side order model
+Feb 24-Feb 26 Coding on the bartender side order model
 Feb 26-Mar 07 Coding for the Bartender side order function
 Mar 14 Coding on forming the bartender interface and link the orderDB with bartender order list
 Mar 15 Coding on creating the main view for the program
 Mar 16 Coding on adding the language switching function
 Mar 18 Coding on adding the UNDO-REDO function
 Mar 18-Mar 19 Preparing presentation
+
+Hao Zuo
+Feb 12-Feb 15 Working on the prototype with Figma
+Feb 17-Feb 19 Going through requirements and Studying for MVC separation
+Feb 24-Feb 26 Designing the user side model and simple user database
+Feb 26-Mar 03 Building the control for detailed functions
+Mar 03-Mar 11 Coding and debugging for the LoginView/CustomerView and main frame
+Mar 11-Mar 17 Adjusting functionality for connection with others' parts
+Mar 18-Mar 19 Preparing presentation
+Mar 21-Mar 23 Modifying code and comments
+

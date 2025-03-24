@@ -1,1 +1,0 @@
-#maybe we can make the notifications a tab and change the color of the button to red when the barista receives it - easier than popup
