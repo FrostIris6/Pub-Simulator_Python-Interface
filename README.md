@@ -90,3 +90,14 @@ Mar 11-Mar 17 Adjusting functionality for connection with others' parts
 Mar 18-Mar 19 Preparing presentation
 Mar 21-Mar 23 Modifying code and comments
 
+Emma Runnman 
+Feb 12-Feb 16 Going through requirements and structuring the project in the project tool Trello
+Feb 17-Feb 23 Created the MVC structure connected to the tables
+Feb 24-Feb 25 Create and fill the database - TableDB
+Feb 24-Feb 28 Follow the MVC-structure, code TableModel and connect with database
+Feb 26-Mar 5 Building the TableController to act as the mediator that handles input and updates both models and views
+Mar 3-Mar 13 Building the Bartender View whit focus on the table section of the screen
+Mar 10-Mar 16 Connect Tableview and order BartenderView to a singular view in Bartender View
+Mar 16-Mar 18 Coding and debugging BartenderView
+Mar 18-Mar 19 Preparing presentation
+
