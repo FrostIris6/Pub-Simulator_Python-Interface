@@ -71,43 +71,43 @@ We used Claude, Deepseek, Chatgpt to help us to fix the error and adjust the int
 
 # Self Time Reporting
 Mu Tang
-Feb 17-Feb 19 Working on the prototype with Figma
-Feb 24-Feb 26 Coding on the bartender side order model
-Feb 26-Mar 07 Coding for the Bartender side order function
-Mar 14 Coding on forming the bartender interface and link the orderDB with bartender order list
-Mar 15 Coding on creating the main view for the program
-Mar 16 Coding on adding the language switching function
-Mar 18 Coding on adding the UNDO-REDO function
-Mar 18-Mar 19 Preparing presentation
+- Feb 17-Feb 19 Working on the prototype with Figma
+- Feb 24-Feb 26 Coding on the bartender side order model
+- Feb 26-Mar 07 Coding for the Bartender side order function
+- Mar 14 Coding on forming the bartender interface and link the orderDB with bartender order list
+- Mar 15 Coding on creating the main view for the program
+- Mar 16 Coding on adding the language switching function
+- Mar 18 Coding on adding the UNDO-REDO function
+- Mar 18-Mar 19 Preparing presentation
 
 Hao Zuo
-Feb 12-Feb 15 Working on the prototype with Figma
-Feb 17-Feb 19 Going through requirements and Studying for MVC separation
-Feb 24-Feb 26 Designing the user side model and simple user database
-Feb 26-Mar 03 Building the control for detailed functions
-Mar 03-Mar 11 Coding and debugging for the LoginView/CustomerView and main frame
-Mar 11-Mar 17 Adjusting functionality for connection with others' parts
-Mar 18-Mar 19 Preparing presentation
-Mar 21-Mar 23 Modifying code and comments
+- Feb 12-Feb 15 Working on the prototype with Figma
+- Feb 17-Feb 19 Going through requirements and Studying for MVC separation
+- Feb 24-Feb 26 Designing the user side model and simple user database
+- Feb 26-Mar 03 Building the control for detailed functions
+- Mar 03-Mar 11 Coding and debugging for the LoginView/CustomerView and main frame
+- Mar 11-Mar 17 Adjusting functionality for connection with others' parts
+- Mar 18-Mar 19 Preparing presentation
+- Mar 21-Mar 23 Modifying code and comments
 
 Emma Runnman 
-Feb 12-Feb 16 Going through requirements and structuring the project in the project tool Trello
-Feb 17-Feb 23 Created the MVC structure connected to the tables
-Feb 24-Feb 25 Create and fill the database - TableDB
-Feb 24-Feb 28 Follow the MVC-structure, code TableModel and connect with database
-Feb 26-Mar 5 Building the TableController to act as the mediator that handles input and updates both models and views
-Mar 3-Mar 13 Building the Bartender View whit focus on the table section of the screen
-Mar 10-Mar 16 Connect Tableview and order BartenderView to a singular view in Bartender View
-Mar 16-Mar 18 Coding and debugging BartenderView
-Mar 18-Mar 19 Preparing presentation
+- Feb 12-Feb 16 Going through requirements and structuring the project in the project tool Trello
+- Feb 17-Feb 23 Created the MVC structure connected to the tables
+- Feb 24-Feb 25 Create and fill the database - TableDB
+- Feb 24-Feb 28 Follow the MVC-structure, code TableModel and connect with database
+- Feb 26-Mar 5 Building the TableController to act as the mediator that handles input and updates both models and views
+- Mar 3-Mar 13 Building the Bartender View whit focus on the table section of the screen
+- Mar 10-Mar 16 Connect Tableview and order BartenderView to a singular view in Bartender View
+- Mar 16-Mar 18 Coding and debugging BartenderView
+- Mar 18-Mar 19 Preparing presentation
 
 Robert Barbu
-Feb 13-Feb 18 Going through requirments and creating an initial logic for the MVC structure
-Feb 19-Feb 24 Updating the file directories and adding the Menu Model
-Feb 28 Updating the Menu Model after revising the strucutre within a team meeting
-Mar 3 Creating the Database for the products and linking them with pictures
-Mar 8-Mar 10 Creating the initial Controllers and Views for the Menu
-Mar 12-Mar 13 Integrating the Menu View inside the Main View
-Mar 14- Mar 15 Adding features related to the users (like low-stock notification, categories for groups of users)
-Mar 18-Mar 19 Preparing presentation
+- Feb 13-Feb 18 Going through requirments and creating an initial logic for the MVC structure
+- Feb 19-Feb 24 Updating the file directories and adding the Menu Model
+- Feb 28 Updating the Menu Model after revising the strucutre within a team meeting
+- Mar 3 Creating the Database for the products and linking them with pictures
+- Mar 8-Mar 10 Creating the initial Controllers and Views for the Menu
+- Mar 12-Mar 13 Integrating the Menu View inside the Main View
+- Mar 14- Mar 15 Adding features related to the users (like low-stock notification, categories for groups of users)
+- Mar 18-Mar 19 Preparing presentation
 
