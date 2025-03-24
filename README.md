@@ -111,3 +111,11 @@ Robert Barbu
 - Mar 14- Mar 15 Adding features related to the users (like low-stock notification, categories for groups of users)
 - Mar 18-Mar 19 Preparing presentation
 
+Chang Zhai
+- Feb 12- Feb 14 Going through project enquirements , learning from reference files for python and employing programming environment as well as demo testing
+- Feb 15- Feb 19 Planning MVC structure for ORDER part and coding OrderModel.py
+- Feb 20- Feb 28 Coding OrderController.py and reserve interface for viewer.
+- Mar 1- Mar 5 Coding Orderview.py and integrate it into main view frame
+- Mar 6- Mar 10 Coding drag and drop function for user order
+- Mar 10- Mar 15 Trying to fetch data from table to connect with other parts
+- Mar 15- Mar 19 Preparing for final presentation
