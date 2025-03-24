@@ -13,12 +13,6 @@ USER_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Data
 USER_FILE = os.path.abspath(USER_FILE)
 
 
-# if os.path.exists(USER_FILE):
-#     print(f"✅ UsersDB.json found at: {os.path.abspath(USER_FILE)}")
-# else:
-#     print("❌ UsersDB.json NOT found! Check the path.")
-
-
 class UserList:
     def __init__(self, name, password, type_of_user, balance=0.0, method="", user_id=None):
         self.id = user_id  # ID assigned by the system

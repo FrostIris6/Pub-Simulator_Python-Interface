@@ -1,3 +1,10 @@
+# This section designs the user information view, incorporating user details and buttons.
+# For regular users, shows "table""login""register" buttons
+# For registered users(VIP customers and bartenders), shows "table""logout" buttons
+#   In user info part, shows users' id, name, account balance
+#   If the user is a bartender, the view will be combined with bartender-specific features, granting more privileges
+#     such as managing stock，managing orders, handling payments, and viewing the current table status.
+
 import tkinter as tk
 
 

@@ -1,3 +1,15 @@
+# This section handles "login" "register" and "table choice" as well as generate the relevant buttons.
+# Login -- the user can log in using their user ID, username, email, or phone number.
+#   If the wrong password is entered, show a warning and display the remaining number of attempts.
+#   The user has a total of 5 chances to try.
+# Register -- the user creates an account primarily with a name and password, while email and phone
+#   number are optional.
+# Table choice -- Choose which table you are sitting at, to connect to the order and table functions.
+# It contains the buttons "Next""Back""Cancel" for better usability.
+# The window for Login/Register can be resized.
+
+
+
 import tkinter as tk
 from tkinter import Toplevel, Label, Entry, Button, StringVar, messagebox
 
@@ -20,7 +32,7 @@ class MultiStepForm:
         self.back_btn = None
         self.next_btn = None
         self.cancel_btn = None
-        self.y_offset = 30  # Vertical offset for input field and buttons
+        self.y_offset = 0.1  # Vertical offset for input field and buttons
 
         # 如果提供了翻译控制器，翻译步骤标题和标签 / If translation controller is provided, translate step titles and labels
         if self.translation_controller:
@@ -41,11 +53,11 @@ class MultiStepForm:
         self.top_window = Toplevel(self.root)
         self.top_window.title(self.steps[self.step]["title"])
         self.top_window.geometry("300x150")
-        self.top_window.resizable(False, False)
+        self.top_window.resizable(True, True)
 
         # Create label
         self.label = Label(self.top_window, text=self.steps[self.step]["label"])
-        self.label.place(x=150, y=self.y_offset - 10, anchor="center")  # Fixed position for label
+        self.label.place(relx=0.5, rely=self.y_offset , anchor="center")  # Fixed position for label
 
         # Create input field for current step
         self.create_input_field()
@@ -69,7 +81,7 @@ class MultiStepForm:
             self.cancel_btn.destroy()
 
         # Buttons will be placed in fixed position below the input field
-        button_y_offset = self.y_offset + 60  # Fixed Y position for buttons
+        button_y_offset = 0.6  # Fixed Y position for buttons
 
         # 获取按钮文本的翻译 / Get translations for button texts
         back_text = "⬅ Back"
@@ -83,15 +95,15 @@ class MultiStepForm:
 
         # Back button
         self.back_btn = Button(self.top_window, text=back_text, command=self.back_step, state=tk.DISABLED)
-        self.back_btn.place(x=100, y=button_y_offset, anchor="center")
+        self.back_btn.place(relx=0.33, rely=button_y_offset, anchor="center")
 
         # Next button
         self.next_btn = Button(self.top_window, text=next_text, command=self.next_step)
-        self.next_btn.place(x=200, y=button_y_offset, anchor="center")
+        self.next_btn.place(relx=0.66, rely=button_y_offset, anchor="center")
 
         # Cancel button
         self.cancel_btn = Button(self.top_window, text=cancel_text, command=self.cancel)
-        self.cancel_btn.place(x=150, y=button_y_offset + 35, anchor="center")
+        self.cancel_btn.place(relx=0.5, rely=button_y_offset + 0.23, anchor="center")
 
     def create_input_field(self):
         """Create the input field dynamically for each step."""
@@ -102,7 +114,7 @@ class MultiStepForm:
             self.dropdown.destroy()
 
         # Set y_offset for input fields based on the label position
-        input_y_offset = self.y_offset + 20  # Adjust this value for spacing between label and input
+        input_y_offset = 0.3  # Adjust this value for spacing between label and input
 
         if self.steps[self.step]["field"] == "user_type":
             # 获取用户类型选项的翻译 / Get translations for user type options
@@ -124,7 +136,7 @@ class MultiStepForm:
             self.option_var.set(options_display[0])  # Default selection
 
             self.dropdown = tk.OptionMenu(self.top_window, self.option_var, *options_display)
-            self.dropdown.place(x=150, y=input_y_offset, anchor="center")  # Fixed position
+            self.dropdown.place(relx=0.5, rely=input_y_offset, anchor="center")  # Fixed position
 
             # 确保正确映射选择的显示值到内部值 / Ensure correct mapping from display value to internal value
             def update_input_var(*args):
@@ -136,7 +148,7 @@ class MultiStepForm:
         else:
             # Use Entry for other steps
             self.entry = Entry(self.top_window, textvariable=self.input_var)
-            self.entry.place(x=150, y=input_y_offset, anchor="center")  # Fixed position
+            self.entry.place(relx=0.5, rely=input_y_offset, anchor="center")  # Fixed position
 
     def next_step(self):
         """Move to the next step."""
@@ -215,7 +227,7 @@ class MultiStepForm:
         canvas.create_oval(0, 0, 2 * radius, 2 * radius, fill="blue", outline="black")
         canvas.create_text(radius, radius, text="i", font=("Arial", 12, "bold"), fill="white")
         canvas.bind("<Button-1>", lambda e: self.info())
-        canvas.place(x=250, y=self.y_offset - 10, anchor="center")
+        canvas.place(relx=0.8, rely=self.y_offset , anchor="center")
 
     def info(self):
         # 获取提示消息的翻译 / Get translation for info message
@@ -420,7 +432,7 @@ class TableChoice:
     def __init__(self, root, login_view, on_finish, translation_controller=None):
         self.root = root
         self.login_view = login_view  # Load LoginView to get user_id
-        self.on_finish = on_finish
+        self.on_finish = on_finish  # callback function to get table choice
         self.translation_controller = translation_controller  # 存储翻译控制器 / Store translation controller
         self.table_choice = None  # Store the selected table
 
@@ -434,7 +446,7 @@ class TableChoice:
             title_text = self.translation_controller.get_text("table_choice.title", default=title_text)
 
         top_window.title(title_text)
-        top_window.geometry("300x500")
+        top_window.geometry("300x350")
 
         # 获取标签文本的翻译 / Get translation for label text
         label_text = "Which table are you sitting at?"
@@ -462,9 +474,11 @@ class TableChoice:
     def on_table_selected(self, table, top_window):
         """When the user selects a table, store the choice and close the window."""
         self.table_choice = table
+        print(f"table choice is: {self.table_choice}")
         user_id = self.login_view.user_id if self.login_view.user_id else "default"  # Get user_id directly from LoginView
 
         result = {"table_choice": self.table_choice, "user_id": user_id}
         self.on_finish(result)  # Callback function to return the selected data
 
-        top_window.destroy()  # Close the window
+        self.root.after(100, top_window.destroy)  # Close the window
+
