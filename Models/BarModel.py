@@ -121,8 +121,8 @@ class BarModel:
                                 combined_specification += f" - {original_specification}"
 
                             # If there's a note, add it to specification
-                            if "note" in item and item["note"]:
-                                combined_specification += f" ({item['note']})"
+                            if "notes" in item and item["notes"]:
+                                combined_specification += f" ({item['notes']})"
 
                             # Assign a numeric ID for product_id
                             if original_product_id not in self.product_id_map:
