@@ -101,3 +101,13 @@ Mar 10-Mar 16 Connect Tableview and order BartenderView to a singular view in Ba
 Mar 16-Mar 18 Coding and debugging BartenderView
 Mar 18-Mar 19 Preparing presentation
 
+Robert Barbu
+Feb 13-Feb 18 Going through requirments and creating an initial logic for the MVC structure
+Feb 19-Feb 24 Updating the file directories and adding the Menu Model
+Feb 28 Updating the Menu Model after revising the strucutre within a team meeting
+Mar 3 Creating the Database for the products and linking them with pictures
+Mar 8-Mar 10 Creating the initial Controllers and Views for the Menu
+Mar 12-Mar 13 Integrating the Menu View inside the Main View
+Mar 14- Mar 15 Adding features related to the users (like low-stock notification, categories for groups of users)
+Mar 18-Mar 19 Preparing presentation
+

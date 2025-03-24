@@ -101,7 +101,7 @@
         "id": 307,
         "name": "Heineken",
         "price": "22 SEK",
-        "stock": 0,
+        "stock": 6,
         "description": {
             "en": "Heineken Brewery, Netherlands, lager, 5%, bottle",
             "sv": "Heineken Bryggeri, Nederl\u00e4nderna, lager, 5%, flaska",

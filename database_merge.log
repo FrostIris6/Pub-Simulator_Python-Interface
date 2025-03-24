@@ -1,0 +1,26 @@
+2025-03-16 21:49:22,416 - INFO - Detected updates in source database, starting merge...
+2025-03-16 21:49:22,417 - INFO - Successfully loaded new data from: c:\Users\barbu\Desktop\Pub_interface\Pub-Simulator_Python-Interface\Database\OrderDB.json
+2025-03-16 21:49:22,418 - INFO - Source data is a single order object, converting to list
+2025-03-16 21:49:22,418 - INFO - Processing 1 new orders...
+2025-03-16 21:49:22,419 - INFO - Processed order 5cebe62e-4f8c-45e8-b472-4dd897b706f5, containing 2 products
+2025-03-16 21:49:22,419 - INFO - Merged database now has 1 orders
+2025-03-16 21:49:22,425 - INFO - Product ID mapping saved to product_id_mapping.json
+2025-03-16 21:49:22,426 - INFO - Successfully merged 1 new orders to database
+2025-03-16 21:49:22,426 - INFO - Updated database saved to c:\Users\barbu\Desktop\Pub_interface\Pub-Simulator_Python-Interface\OrderDB.json
+2025-03-16 21:49:22,777 - INFO - Source database has not changed, no need to merge
+2025-03-17 15:33:13,678 - INFO - Source database has not changed, no need to merge
+2025-03-17 15:35:39,265 - INFO - Detected updates in source database, starting merge...
+2025-03-17 15:35:39,280 - INFO - Successfully loaded new data from: c:\Users\barbu\Desktop\Pub_interface\Pub-Simulator_Python-Interface\Database\OrderDB.json
+2025-03-17 15:35:39,281 - INFO - Source data is a single order object, converting to list
+2025-03-17 15:35:39,282 - INFO - Processing 1 new orders...
+2025-03-17 15:35:39,304 - INFO - Loaded existing product ID mapping, containing 2 items
+2025-03-17 15:35:39,305 - WARNING - Order d548b6b6-5001-41cc-884b-8ec27688d482 has no product details
+2025-03-17 15:35:39,305 - INFO - Processed order d548b6b6-5001-41cc-884b-8ec27688d482, containing 0 products
+2025-03-17 15:35:39,306 - INFO - Loaded 4 existing orders from c:\Users\barbu\Desktop\Pub_interface\Pub-Simulator_Python-Interface\OrderDB.json
+2025-03-17 15:35:39,306 - INFO - Merged database now has 5 orders
+2025-03-17 15:35:39,311 - INFO - Product ID mapping saved to product_id_mapping.json
+2025-03-17 15:35:39,311 - INFO - Successfully merged 1 new orders to database
+2025-03-17 15:35:39,311 - INFO - Updated database saved to c:\Users\barbu\Desktop\Pub_interface\Pub-Simulator_Python-Interface\OrderDB.json
+2025-03-17 15:38:08,717 - INFO - Source database has not changed, no need to merge
+2025-03-17 15:42:25,783 - INFO - Source database has not changed, no need to merge
+2025-03-20 11:53:08,607 - INFO - Source database has not changed, no need to merge

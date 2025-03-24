@@ -1,25 +1,8 @@
 {
-    "transaction_id": "5cebe62e-4f8c-45e8-b472-4dd897b706f5",
+    "transaction_id": "d548b6b6-5001-41cc-884b-8ec27688d482",
     "user_id": 1,
     "table_id": 1,
-    "money": 330,
-    "transaction_time": "2025-03-11 01:47:02",
-    "breakdown": [
-        {
-            "product_id": "汉堡",
-            "price": 15,
-            "amount": 2,
-            "specification": "can",
-            "note": "cold",
-            "is_paid": false
-        },
-        {
-            "product_id": "1汉堡",
-            "price": 25,
-            "amount": 12,
-            "specification": "can",
-            "note": "cold",
-            "is_paid": false
-        }
-    ]
+    "money": 0,
+    "transaction_time": "2025-03-17 15:33:51",
+    "breakdown": []
 }
